@@ -1,5 +1,6 @@
 import { TypographyH2 } from "@/presentation/components/shared/TypographyH2";
 import { TypographyP } from "@/presentation/components/shared/TypographyP";
+import { buttonVariants } from "@/presentation/components/ui/button";
 
 import { useConfirmAccount } from "@/presentation/hooks";
 
@@ -17,8 +18,8 @@ export const ConfirmAccount = () => {
           ¡Tu cuenta ha sido autenticada con éxito!
         </TypographyH2>
         <TypographyP className="text-[#202446] text-center">
-          Ahora tienes acceso completo a todas tus funcionalidades. ¡Explora, genera y
-          disfruta de tus recetas favoritas!
+          Ahora tienes acceso completo a todas tus funcionalidades. ¡Explora,
+          genera y disfruta de tus recetas favoritas!
         </TypographyP>
       </header>
 
@@ -41,7 +42,9 @@ export const ConfirmAccount = () => {
       <Link
         to="/"
         type="submit"
-        className="bg-[#366EFF] p-3 hover:bg-[#366EFF]/90 text-center text-white rounded-lg"
+        className={buttonVariants({
+          className: "text-lg",
+        })}
       >
         Volver a la pagina principal
       </Link>

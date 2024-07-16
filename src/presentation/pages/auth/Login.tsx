@@ -22,7 +22,6 @@ import { useLoginMutation } from "@/presentation/hooks";
 import { Spinner } from "@/presentation/components/ui/spinner";
 
 export const Login = () => {
-  console.log(import.meta.env.VITE_BACKEND_URL);
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
