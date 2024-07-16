@@ -22,6 +22,7 @@ import { useLoginMutation } from "@/presentation/hooks";
 import { Spinner } from "@/presentation/components/ui/spinner";
 
 export const Login = () => {
+  console.log(import.meta.env.VITE_BACKEND_URL);
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -30,7 +31,7 @@ export const Login = () => {
     },
   });
 
-  const { loginMutation,isLoadingLogin } = useLoginMutation();
+  const { loginMutation, isLoadingLogin } = useLoginMutation();
 
   async function onSubmit(values: z.infer<typeof loginSchema>) {
     loginMutation.mutateAsync(values);
@@ -42,7 +43,7 @@ export const Login = () => {
         Inicia sesión
       </TypographyH2>
       <TypographyP className="text-center">
-        Inicia sesión y administra tus productos
+        Inicia sesión y accede a tus recetas
       </TypographyP>
 
       <Form {...form}>
@@ -58,7 +59,7 @@ export const Login = () => {
                 <FormLabel>Correo</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="example@gmail.com"
+                    placeholder="Tu email"
                     className={`border ${
                       errors.email?.message
                         ? "border-red-500"
@@ -81,7 +82,7 @@ export const Login = () => {
                 <FormControl>
                   <Input
                     type="password"
-                    placeholder="*****************"
+                    placeholder="Tu contraseña"
                     className={`border ${
                       errors.email?.message
                         ? "border-red-500"
@@ -97,14 +98,11 @@ export const Login = () => {
             )}
           />
 
-          <Link to="/auth/olvide-password" className="text-[#366EFF] text-md">
+          <Link to="/auth/olvide-password" className="text-sky-600">
             ¿Olvidaste tu contraseña?
           </Link>
 
-          <Button
-            type="submit"
-            className="w-full flex gap-2 md:text-lg"
-          >
+          <Button type="submit" className="w-full flex gap-2 md:text-lg">
             <Spinner
               size="small"
               show={isLoadingLogin}
@@ -117,7 +115,7 @@ export const Login = () => {
             ¿No tienes cuenta?
             <Link
               to="/auth/registrar"
-              className="text-[#366EFF] ml-2 font-medium"
+              className="text-sky-600 ml-2 font-medium"
             >
               Crea una
             </Link>

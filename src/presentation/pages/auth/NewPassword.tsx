@@ -113,7 +113,7 @@ export const NewPassword = () => {
                   <FormControl>
                     <Input
                       type="password"
-                      placeholder="************"
+                      placeholder="Tu contraseña"
                       className={`border ${
                         errors.password?.message
                           ? "border-red-500"

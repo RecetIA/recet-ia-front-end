@@ -17,8 +17,8 @@ export const ConfirmAccount = () => {
           ¡Tu cuenta ha sido autenticada con éxito!
         </TypographyH2>
         <TypographyP className="text-[#202446] text-center">
-          Ahora tienes acceso completo a todas tus funciones. ¡Explora, crea y
-          disfruta de tus proyectos y compras favoritas!
+          Ahora tienes acceso completo a todas tus funcionalidades. ¡Explora, genera y
+          disfruta de tus recetas favoritas!
         </TypographyP>
       </header>
 

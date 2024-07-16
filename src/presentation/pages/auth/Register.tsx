@@ -34,7 +34,7 @@ export const Register = () => {
   });
 
   const { registerMutation, isLoadingRegister } = useRegisterMutation();
-  
+
   function onSubmit(values: z.infer<typeof registerSchema>) {
     registerMutation.mutateAsync(values);
   }
@@ -45,7 +45,7 @@ export const Register = () => {
         Crea tu cuenta
       </TypographyH2>
       <TypographyP className="text-center">
-        Crea tu cuenta y administra tus productos
+        Crea tu cuenta y genera tus recetas
       </TypographyP>
 
       {registerMutation.data && (
@@ -70,7 +70,7 @@ export const Register = () => {
                 <FormLabel>Nombre</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Jon doe"
+                    placeholder="Tu nombre"
                     className={`border ${
                       errors.name?.message
                         ? "border-red-500"
@@ -92,7 +92,7 @@ export const Register = () => {
                 <FormLabel>Correo</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="example@gmail.com"
+                    placeholder="Tu email"
                     className={`border ${
                       errors.email?.message
                         ? "border-red-500"
@@ -115,7 +115,7 @@ export const Register = () => {
                 <FormControl>
                   <Input
                     type="password"
-                    placeholder="**********"
+                    placeholder="Tu contraseña"
                     className={`border ${
                       errors.password?.message
                         ? "border-red-500"
@@ -131,7 +131,7 @@ export const Register = () => {
             )}
           />
 
-          <Link to="/auth/olvide-password" className="text-[#366EFF] text-md">
+          <Link to="/auth/olvide-password" className="text-sky-600 text-md">
             ¿Olvidaste tu contraseña?
           </Link>
 
@@ -150,7 +150,7 @@ export const Register = () => {
 
           <TypographyP className="text-md">
             ¿Ya tienes cuenta?
-            <Link to="/auth/login" className="text-[#366EFF] ml-2 font-medium">
+            <Link to="/auth/login" className="text-sky-600 ml-2 font-medium">
               Inicia Sesión
             </Link>
           </TypographyP>

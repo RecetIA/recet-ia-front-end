@@ -45,7 +45,7 @@ export const ResetPassword = () => {
           Recuperar contraseña
         </TypographyH2>
         <TypographyP className="text-center">
-          Recupera tu cuenta para acceder a tus productos
+          Recupera tu cuenta para acceder a tus recetas
         </TypographyP>
       </header>
 
@@ -84,7 +84,7 @@ export const ResetPassword = () => {
                 <FormLabel>Correo</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="example@gmail.com"
+                    placeholder="Tu email"
                     className={`border ${
                       errors.email?.message
                         ? "border-red-500"
@@ -114,10 +114,7 @@ export const ResetPassword = () => {
           <div className="flex flex-col md:flex-row gap-4 items-center">
             <TypographyP className="text-md text-balance">
               ¿Ya tienes cuenta?
-              <Link
-                to="/auth/login"
-                className="text-[#366EFF] ml-2 font-medium"
-              >
+              <Link to="/auth/login" className="text-sky-600 ml-2 font-medium">
                 Inicia sesion
               </Link>
             </TypographyP>
@@ -126,7 +123,7 @@ export const ResetPassword = () => {
               ¿No tienes cuenta?
               <Link
                 to="/auth/registrar"
-                className="text-[#366EFF] ml-2 font-medium"
+                className="text-sky-600 ml-2 font-medium"
               >
                 Crea una
               </Link>
