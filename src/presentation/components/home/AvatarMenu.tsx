@@ -38,7 +38,7 @@ export const AvatarMenu = ({ user, isLoading, logout }: Props) => {
         asChild
         className="focus-visible:ring-offset-0 focus-visible:ring-0 w-48"
       >
-        <Button variant="ghost" className="flex justify-between p-0">
+        <Button variant="ghost" className="flex justify-between p-0 hover:bg-transparent">
           <span className="flex items-center gap-2">
             {isLoading ? (
               <Skeleton className="h-8 w-8 rounded-full" />
@@ -75,7 +75,7 @@ export const AvatarMenu = ({ user, isLoading, logout }: Props) => {
         </Button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="w-48 mt-2">
+      <DropdownMenuContent className="w-48 mt-2 p-0">
         <DropdownMenuItem
           className="flex justify-center text-md cursor-pointer"
           onClick={() => logout()}

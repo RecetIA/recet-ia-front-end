@@ -30,17 +30,16 @@ export const useLoginMutation = () => {
   
 
   useEffect(() => {
-    if (loginMutation.data && !token) {
+    if (loginMutation.data) {
       saveToken(loginMutation.data as string);
-    }
-
-    if (token) {
       navitation("/");
     }
-  }, [loginMutation.data, token, saveToken, navitation]);
+
+  }, [loginMutation.data, saveToken, navitation]);
 
   const logout = () => {
     saveToken(null);
+    navitation("/");
   }
 
   return { loginMutation, token, logout, isLoadingLogin };

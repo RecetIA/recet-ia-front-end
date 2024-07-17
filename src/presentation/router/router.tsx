@@ -1,14 +1,21 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import { AuthLayout } from "../layouts/AuthLayout";
+import { AuthLayout, HomeLayout, RecipeLayout } from "../layouts";
+
 import { Login } from "../pages/auth/Login";
 import { Register } from "../pages/auth/Register";
 import { ResetPassword } from "../pages/auth/ResetPassword";
 import { NewPassword } from "../pages/auth/NewPassword";
 import { ConfirmAccount } from "../pages/auth/ConfirmAccount";
 
-import { HomeLayout } from "../layouts/HomeLayout";
 import { Home } from "../pages/home/Home";
+
+import { GenerateRecipe } from "../pages/recipe/GenerateRecipe";
+import { FavoriteRecipes } from "../pages/recipe/FavoriteRecipes";
+
+
+import { Heart, ReceiptText } from "lucide-react";
+
 
 const authRoutes = [
   {
@@ -41,6 +48,21 @@ const homeRoutes = [
 
 ];
 
+export const recipesRoutes = [
+  {
+    to: "/recetas/crear-receta",
+    component: <GenerateRecipe />,
+    title: "Generar Recetas",
+    icon: <ReceiptText width="1.2rem" height="1.2rem" />,
+  },
+  {
+    to: "/recetas/favoritos",
+    component: <FavoriteRecipes />,
+    title: "Mis favoritos",
+    icon: <Heart width="1.2rem" height="1.2rem" />,
+  },
+];
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -62,6 +84,16 @@ export const router = createBrowserRouter([
     element: <AuthLayout />,
     children: [
       ...authRoutes.map((route) => ({
+        path: route.to,
+        element: route.component,
+      })),
+    ],
+  },
+  {
+    path: "/recetas",
+    element: <RecipeLayout />,
+    children: [
+      ...recipesRoutes.map((route) => ({
         path: route.to,
         element: route.component,
       })),

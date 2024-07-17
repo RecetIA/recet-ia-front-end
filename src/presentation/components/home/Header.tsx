@@ -1,3 +1,4 @@
+
 import { useLoginMutation, useProfile } from "@/presentation/hooks";
 
 import { buttonVariants } from "../ui/button";
@@ -5,12 +6,10 @@ import { AvatarMenu } from "./AvatarMenu";
 
 import { Link, NavLink } from "react-router-dom";
 
-
 export const Header = () => {
-  const { token,logout } = useLoginMutation();
+  const { token, logout} = useLoginMutation();
   const { queryProfile } = useProfile(token!);
 
-  
   return (
     <header className="bg-white relative flex justify-between items-center py-3 px-2 md:px-8">
       <div>
@@ -19,7 +18,17 @@ export const Header = () => {
         </Link>
       </div>
 
-      <section>
+      <nav className="flex items-center gap-4">
+        <Link
+          to="/recetas/crear-receta"
+          className={buttonVariants({
+            variant: "link",
+            className: "!text-base text-slate-700",
+          })}
+        >
+          Haz tu receta
+        </Link>
+
         {token ? (
           <AvatarMenu
             user={queryProfile.data!}
@@ -50,7 +59,7 @@ export const Header = () => {
             </NavLink>
           </div>
         )}
-      </section>
+      </nav>
     </header>
   );
 };
