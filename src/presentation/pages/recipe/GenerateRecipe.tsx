@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { MouseEvent, useState } from 'react';
 
 import { TypographyP } from '@/presentation/components/shared/TypographyP';
 import { TypographyH2 } from '../../components/shared/TypographyH2';
@@ -134,11 +134,11 @@ const ingredientsOptions = [
 
 export const GenerateRecipe = () => {
   const [ingredients, setIngredients] = useState<Option[]>([]);
+  // console.log(ingredients);
 
-  const ingredientsOptionsWithEmoji = ingredientsOptions.map((option) => ({
-    label: option.label,
-    value: option.value,
-  }));
+  const handleLoadIngredients = (ingredient: Option) => {
+    setIngredients((prev) => [...prev, ingredient]);
+  }
 
   return (
     <div>
@@ -159,7 +159,7 @@ export const GenerateRecipe = () => {
           className="w-full min-h-12 mt-4 text-lg rounded-xl"
           value={ingredients}
           onChange={setIngredients}
-          defaultOptions={ingredientsOptionsWithEmoji}
+          defaultOptions={ingredientsOptions}
           placeholder="Ingresa tus ingredientes"
           emptyIndicator={
             <TypographyP className="text-center text-gray-700">
@@ -170,13 +170,17 @@ export const GenerateRecipe = () => {
         />
 
         <div className="flex flex-wrap justify-center gap-3 w-full my-5">
-          {ingredientsOptions.map((option) => (
-            <Badge
-              key={option.value}
-              className="rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 text-sm cursor-pointer"
+          {ingredientsOptions.map((option, i) => (
+            <Button
+              key={i}
+              onClick={() => handleLoadIngredients(option)}
+              variant="ghost"
+              className="p-0"
             >
-              {option.emoji} {option.label}
-            </Badge>
+              <Badge className="rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 text-sm cursor-pointer">
+                {option.emoji} {option.label}
+              </Badge>
+            </Button>
           ))}
         </div>
 

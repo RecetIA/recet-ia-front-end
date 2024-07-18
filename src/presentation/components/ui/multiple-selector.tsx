@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { Command as CommandPrimitive, useCommandState } from "cmdk";
 import { X } from "lucide-react";
 import * as React from "react";
@@ -475,6 +476,7 @@ const MultipleSelector = React.forwardRef<
             />
 
             <button
+              title="Remover todo"
               type="button"
               onClick={() => {
                 setSelected(selected.filter((s) => s.fixed));
@@ -544,9 +546,9 @@ const MultipleSelector = React.forwardRef<
                                 onChange?.(newOptions);
                               }}
                               className={cn(
-                                "cursor-pointer",
+                                "cursor-pointer text-black",
                                 option.disable &&
-                                  "cursor-default text-slate-700-foreground"
+                                  "cursor-default text-muted-foreground"
                               )}
                             >
                               {option.label}
