@@ -13,7 +13,7 @@ export const Sidebar = () => {
   const { queryProfile } = useProfile(token!);
 
   return (
-    <aside>
+    <aside className="bg-gray-100">
       <div className="bg-[url('/bg-logo.svg')] bg-no-repeat bg-cover px-5 py-4 shadow-md rounded-bl-xl rounded-br-xl">
         <TypographyH3 className="font-semibold text-emerald-600">
           RecetIA

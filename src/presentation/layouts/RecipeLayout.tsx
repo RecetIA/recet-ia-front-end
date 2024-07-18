@@ -5,7 +5,7 @@ export const RecipeLayout = () => {
   return (
     <div className="flex">
       <Sidebar/>
-      <main className="bg-gray-100 min-h-screen w-full container">
+      <main className="min-h-screen w-full container">
         <Outlet />
       </main>
     </div>

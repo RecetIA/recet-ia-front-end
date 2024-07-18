@@ -68,9 +68,9 @@ export const AvatarMenu = ({ user, isLoading, logout }: Props) => {
           </span>
 
           {isOpen ? (
-            <ChevronDown className="h-5 w-5 text-slate-700" />
+            <ChevronDown className="h-5 w-5 text-slate-800" />
           ) : (
-            <ChevronRight className="h-5 w-5 text-slate-700" />
+            <ChevronRight className="h-5 w-5 text-slate-800" />
           )}
         </Button>
       </DropdownMenuTrigger>
