@@ -11,7 +11,7 @@ export const Header = () => {
   const { queryProfile } = useProfile(token!);
 
   return (
-    <header className="bg-white relative flex justify-between items-center py-3 px-2 md:px-8">
+    <header className="bg-white relative flex justify-between items-center py-3 px-2 md:px-8 z-20">
       <div>
         <Link className="text-2xl font-bold text-slate-900" to="/">
           RecetIA
