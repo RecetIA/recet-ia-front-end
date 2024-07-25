@@ -5,6 +5,7 @@ import { TypographyH2 } from '../../components/shared/TypographyH2';
 
 import { Badge } from '@/presentation/components/ui/badge';
 import { Button } from '@/presentation/components/ui/button';
+import { toast } from '@/presentation/components/ui/use-toast';
 import MultipleSelector, { Option } from '@/presentation/components/ui/multiple-selector';
 
 import { Sparkles } from 'lucide-react';
@@ -132,17 +133,31 @@ const ingredientsOptions = [
   },
 ];
 
+const maxSelectedIngredients = 4;
+
 export const GenerateRecipe = () => {
   const [ingredients, setIngredients] = useState<Option[]>([]);
-  // console.log(ingredients);
 
   const handleLoadIngredients = (ingredient: Option) => {
+    if (ingredients.some((i) => i.value === ingredient.value)) return;
+
+    if (ingredients.length >= maxSelectedIngredients) {
+      handleMaxSelected(maxSelectedIngredients);
+      return;
+    }
+   
     setIngredients((prev) => [...prev, ingredient]);
+  }
+
+  const handleMaxSelected = (maxLimit: number) => {
+    toast({
+      title: `Solo puedes seleccionar ${maxLimit} ingredientes`,
+    });
   }
 
   return (
     <div>
-      <section className="flex flex-col justify-center items-center py-6 text-center">
+      <section className="flex flex-col justify-center items-center p-2 text-center">
         <TypographyH2 className="font-semibold mb-3 text-gray-700">
           Tus ingredientes aquí
         </TypographyH2>
@@ -156,9 +171,10 @@ export const GenerateRecipe = () => {
         </TypographyP>
 
         <MultipleSelector
-          className="w-full min-h-12 mt-4 text-lg rounded-xl"
+          className="w-full min-h-12 mt-2 text-lg rounded-xl"
           value={ingredients}
           onChange={setIngredients}
+          onMaxSelected={handleMaxSelected}
           defaultOptions={ingredientsOptions}
           placeholder="Ingresa tus ingredientes"
           emptyIndicator={
@@ -167,9 +183,10 @@ export const GenerateRecipe = () => {
             </TypographyP>
           }
           hidePlaceholderWhenSelected
+          maxSelected={maxSelectedIngredients}
         />
 
-        <div className="flex flex-wrap justify-center gap-3 w-full my-5">
+        <div className="flex flex-wrap justify-center gap-3 w-full my-3">
           {ingredientsOptions.map((option, i) => (
             <Button
               key={i}
@@ -184,7 +201,7 @@ export const GenerateRecipe = () => {
           ))}
         </div>
 
-        <Button size="xl" className="flex gap-3 font-semibold">
+        <Button size="xl" className="flex gap-3 font-semibold mb-2">
           Generar receta <Sparkles />
         </Button>
       </section>

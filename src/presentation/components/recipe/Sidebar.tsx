@@ -11,10 +11,10 @@ import { Link } from "react-router-dom";
 
 export const Sidebar = () => {
   const { token, logout } = useLoginMutation();
-  const { queryProfile } = useProfile(token!);
+  const { queryProfile } = useProfile(token!, logout);
 
   return (
-    <aside className="bg-gray-100 w-60">
+    <aside className="sticky top-0 bg-gray-100 w-60 h-screen">
       <div className="bg-[url('/bg-logo.svg')] bg-no-repeat bg-cover px-5 py-4 shadow-md rounded-bl-xl rounded-br-xl">
         <Link to="/" className="font-semibold text-emerald-600 text-2xl">
           RecetIA
