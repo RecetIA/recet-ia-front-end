@@ -8,7 +8,7 @@ import { Link, NavLink } from "react-router-dom";
 
 export const Header = () => {
   const { token, logout} = useLoginMutation();
-  const { queryProfile } = useProfile(token!);
+  const { queryProfile } = useProfile(token!,logout);
 
   return (
     <header className="bg-white relative flex justify-between items-center py-3 px-2 md:px-8 z-20">

@@ -8,7 +8,7 @@ import { useLocalStorage } from "@uidotdev/usehooks";
 import { useNavigate } from "react-router-dom";
 
 export const useLoginMutation = () => {
-  const [isLoadingLogin, setisLoadingLogin] = useState(false);
+  const [isLoadingLogin, setIsLoadingLogin] = useState(false);
   const navitation = useNavigate();
 
   const loginMutation = useMutation({
@@ -16,13 +16,13 @@ export const useLoginMutation = () => {
       return  UseCases.loginUserUseCase(apiFetcher, body)
     },
     onMutate: () => {
-      setisLoadingLogin(true);
+      setIsLoadingLogin(true);
     },
     onSuccess: () => {
-      setisLoadingLogin(false);
+      setIsLoadingLogin(false);
     },
     onError: () => {
-      setisLoadingLogin(false);
+      setIsLoadingLogin(false);
     },
   });
 

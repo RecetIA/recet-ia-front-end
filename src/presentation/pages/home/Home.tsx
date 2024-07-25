@@ -27,7 +27,7 @@ export const Home = () => {
       </article>
 
       <img src="/slider-images.png" className="absolute hidden lg:block
-       lg:-top-[35rem] lg:-right-[35rem] animate-[spinWithPause_10s_linear_infinite] xl:-top-[41rem] xl:-right-[41rem]
+       lg:-top-[35rem] lg:-right-[35rem] animate-[spinWithPause_10s_linear_2] xl:-top-[41rem] xl:-right-[41rem]
       2xl:-top-[51rem] 2xl:-right-[51rem]" alt="image" />
     </section>
   );

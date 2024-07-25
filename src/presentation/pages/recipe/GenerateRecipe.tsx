@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from 'react';
+import { useState } from 'react';
 
 import { TypographyP } from '@/presentation/components/shared/TypographyP';
 import { TypographyH2 } from '../../components/shared/TypographyH2';
