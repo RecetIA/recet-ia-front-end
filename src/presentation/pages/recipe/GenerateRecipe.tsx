@@ -1,159 +1,24 @@
-import { useState } from 'react';
 
 import { TypographyP } from '@/presentation/components/shared/TypographyP';
 import { TypographyH2 } from '../../components/shared/TypographyH2';
 
 import { Badge } from '@/presentation/components/ui/badge';
 import { Button } from '@/presentation/components/ui/button';
-import { toast } from '@/presentation/components/ui/use-toast';
-import MultipleSelector, { Option } from '@/presentation/components/ui/multiple-selector';
+import MultipleSelector from '@/presentation/components/ui/multiple-selector';
+
+import { ingredientsOptions, useIngredientsStore } from '@/presentation/store/ingredients-store';
 
 import { Sparkles } from 'lucide-react';
 
-const ingredientsOptions = [
-  {
-    label: "Pan blanco",
-    value: "pan-blanco",
-    emoji: "🍞"
-  },
-  {
-    label: "Aguacate",
-    value: "aguacate",
-    emoji: "🥑"
-  },
-  {
-    label: "Car de res",
-    value: "carne-res",
-    emoji: "🥩"
-  },
-  {
-    label: "Zanahoria",
-    value: "zanahoria",
-    emoji: "🥕"
-  },
-  {
-    label: "Brócoli",
-    value: "brocoli",
-    emoji: "🥦"
-  },
-  {
-    label: "Tomate",
-    value: "tomate",
-    emoji: "🍅"
-  },
-  {
-    label: "Papa",
-    value: "papa",
-    emoji: "🥔"
-  },
-  {
-    label: "Cebolla",
-    value: "cebolla",
-    emoji: "🧅"
-  },
-  {
-    label: "Limón",
-    value: "limon",
-    emoji: "🍋"
-  },
-  {
-    label: "Ajo",
-    value: "ajo",
-    emoji: "🧄"
-  },
-  {
-    label: "Huevo",
-    value: "huevo",
-    emoji: "🥚"
-  },
-  {
-    label: "Pollo",
-    value: "pollo",
-    emoji: "🍗"
-  },
-  {
-    label: "Arroz",
-    value: "arroz",
-    emoji: "🍚"
-  },
-  {
-    label: "Ají",
-    value: "aji",
-    emoji: "🌶️"
-  },
-  {
-    label: "Queso",
-    value: "queso",
-    emoji: "🧀"
-  },
-  {
-    label: "Leche",
-    value: "leche",
-    emoji: "🥛"
-  },
-  {
-    label: "Mantequilla",
-    value: "mantequilla",
-    emoji: "🧈"
-  },
-  {
-    label: "Champiñón",
-    value: "champinon",
-    emoji: "🍄"
-  },
-  {
-    label: "Maíz",
-    value: "maiz",
-    emoji: "🌽"
-  },
-  {
-    label: "Plátano",
-    value: "platano",
-    emoji: "🍌"
-  },
-  {
-    label: "Fresa",
-    value: "fresa",
-    emoji: "🍓"
-  },
-  {
-    label: "Manzana",
-    value: "manzana",
-    emoji: "🍎"
-  },
-  {
-    label: "Piña",
-    value: "pina",
-    emoji: "🍍"
-  },
-  {
-    label: "Pescado",
-    value: "pescado",
-    emoji: "🐟"
-  },
-];
-
-const maxSelectedIngredients = 4;
 
 export const GenerateRecipe = () => {
-  const [ingredients, setIngredients] = useState<Option[]>([]);
+  const ingredients = useIngredientsStore((state) => state.ingredients);
+  const addIngredient = useIngredientsStore((state) => state.addIngredient);
+  const maxSelectedIngredients = useIngredientsStore(
+    (state) => state.maxSelectedIngredients
+  );
+  const handleMaxSelected = useIngredientsStore((state) => state.handleMaxSelected);
 
-  const handleLoadIngredients = (ingredient: Option) => {
-    if (ingredients.some((i) => i.value === ingredient.value)) return;
-
-    if (ingredients.length >= maxSelectedIngredients) {
-      handleMaxSelected(maxSelectedIngredients);
-      return;
-    }
-   
-    setIngredients((prev) => [...prev, ingredient]);
-  }
-
-  const handleMaxSelected = (maxLimit: number) => {
-    toast({
-      title: `Solo puedes seleccionar ${maxLimit} ingredientes`,
-    });
-  }
 
   return (
     <div>
@@ -173,7 +38,7 @@ export const GenerateRecipe = () => {
         <MultipleSelector
           className="w-full min-h-12 mt-2 text-lg rounded-xl"
           value={ingredients}
-          onChange={setIngredients}
+          onChange={(value) => useIngredientsStore.setState({ ingredients: value })}
           onMaxSelected={handleMaxSelected}
           defaultOptions={ingredientsOptions}
           placeholder="Ingresa tus ingredientes"
@@ -190,7 +55,7 @@ export const GenerateRecipe = () => {
           {ingredientsOptions.map((option, i) => (
             <Button
               key={i}
-              onClick={() => handleLoadIngredients(option)}
+              onClick={() => addIngredient(option)}
               variant="ghost"
               className="p-0"
             >

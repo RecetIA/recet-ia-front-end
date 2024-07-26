@@ -5,4 +5,6 @@ export * from "./auth/useChangePasswordMutation";
 export * from "./auth/useCheckUserToken";
 export * from "./auth/useLoginMutation";
 
+export * from "./recipe/useGenerateRecipe";
+
 export * from "./user/useProfile";
