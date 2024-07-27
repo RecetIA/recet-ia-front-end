@@ -7,6 +7,8 @@ export * from "./auth/useLoginMutation";
 
 export * from "./recipe/useRecipeMutation";
 export * from "./recipe/useFavoriteRecipes";
+export * from "./recipe/useFavoriteMutation";
 export * from "./recipe/useRecipeById";
+export * from "./recipe/usePrefetchRecipe";
 
 export * from "./user/useProfile";

@@ -29,7 +29,7 @@ export const GenerateRecipe = () => {
 
   const { token } = useLoginMutation();
   const { recipeMutation, isLoadingRecipe } = useRecipeMutation(
-    "669c4795b998905e2e6e4b30",
+    "669c4d60b998905e2e6e4b72",
     token!
   );
 

@@ -20,6 +20,7 @@ export class RecipeMapper {
       ingredients: response.recipe.ingredients,
       steps: response.recipe.steps,
       nutritional: response.recipe.nutritional,
+      isFavorite: response.isFavorite,
     };
   }
 

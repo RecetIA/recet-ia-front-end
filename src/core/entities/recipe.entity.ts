@@ -14,6 +14,7 @@ export interface FullRecipe extends Recipe {
   ingredients: Ingredient[];
   steps: string[];
   nutritional: Nutritional;
+  isFavorite: boolean;
 }
 
 export interface ShortRecipe{

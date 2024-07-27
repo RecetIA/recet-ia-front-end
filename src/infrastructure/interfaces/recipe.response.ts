@@ -6,6 +6,7 @@ export interface RecipeResponse {
   creator: string;
   createAt: string;
   updateAt: string;
+  isFavorite: boolean;
 }
 
 interface Recipe {

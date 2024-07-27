@@ -1,8 +1,9 @@
 import { apiFetcher } from "@/config/adapters/api.adapter";
 import * as UseCases from "@/core/use-cases";
+import { useIngredientsStore } from "@/presentation/store/ingredients-store";
 
 import { useMutation } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const useRecipeMutation = (id: string, token: string) => {
   const [isLoadingRecipe, setIsLoadingRecipe] = useState(false);
@@ -19,6 +20,10 @@ export const useRecipeMutation = (id: string, token: string) => {
       setIsLoadingRecipe(false);
     },
   });
+
+  useEffect(() => {
+    useIngredientsStore.setState({ ingredients: [] });
+  }, []);
 
   return {
     recipeMutation: generateRecipeMutation,

@@ -1,5 +1,5 @@
 
-import { useLoginMutation, useRecipe } from "@/presentation/hooks";
+import { useFavoriteMutation, useLoginMutation, useRecipe } from "@/presentation/hooks";
 
 import { TypographyH3 } from "@/presentation/components/shared/TypographyH3";
 import { Button } from "@/presentation/components/ui/button";
@@ -10,8 +10,9 @@ import { IngredientsList } from "@/presentation/components/recipe/IngredientsLis
 import { Formatter } from "@/config/helpers/formatter";
 
 import {  useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, Bookmark, Heart } from "lucide-react";
+import { ArrowLeft, Heart } from "lucide-react";
 import { TypographyP } from "@/presentation/components/shared/TypographyP";
+import { cn } from "@/presentation/lib/utils";
 
 export const FullRecipe = () => {
   const params = useParams();
@@ -22,6 +23,9 @@ export const FullRecipe = () => {
     params.id!,
     token!
   );
+  const { favoriteMutation } = useFavoriteMutation(token!,params.id!);
+  console.log(favoriteMutation.data);
+  console.log(queryRecipe.data?.isFavorite);
 
   const [
     firstHalfIngredients,
@@ -42,17 +46,15 @@ export const FullRecipe = () => {
 
         <div className="flex gap-3">
           <Button
+            onClick={() => favoriteMutation.mutate({ recipeId: params.id! })}
             size="icon"
             className="w-8 h-8 rounded-lg bg-primary/20 hover:bg-primary/30 text-primary shadow-none transition-all"
           >
-            <Heart className="" />
-          </Button>
-
-          <Button
-            size="icon"
-            className="w-8 h-8 rounded-lg bg-primary/20 hover:bg-primary/30 text-primary shadow-none transition-all"
-          >
-            <Bookmark className="" />
+            <Heart
+              className={cn({
+                "fill-primary": queryRecipe.data?.isFavorite,
+              })}
+            />
           </Button>
         </div>
       </section>

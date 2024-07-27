@@ -4,20 +4,21 @@ import { IconAvatar } from "../shared/IconAvatar";
 
 import { Badge } from "../ui/badge";
 import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
+import { buttonVariants } from "../ui/button";
 
 import { ShortRecipe } from "@/core/entities/recipe.entity";
+import { GLOBALS } from "@/config/helpers/constants";
 
 import { ArrowRight, Clock, Flame, Target, User } from "lucide-react";
 import { Link } from "react-router-dom";
-import { buttonVariants } from "../ui/button";
 
 interface Props {
   recipe: ShortRecipe;
+  prefetchRecipe?: (id: string) => void;
 }
 
-const imageUrlFallback = "https://res.cloudinary.com/dufuhfakg/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1722098616/placeholder-image_crpjul.png";
 
-export const RecipeCard = ({ recipe }: Props) => {
+export const RecipeCard = ({ recipe, prefetchRecipe }: Props) => {
   const {
     id,
     name,
@@ -34,7 +35,7 @@ export const RecipeCard = ({ recipe }: Props) => {
       <CardHeader className="relative p-0">
         <img
           className="w-full md:h-[200px] object-cover object-center"
-          src={!imageUrl ? imageUrlFallback : imageUrl}
+          src={!imageUrl ? GLOBALS.imageUrlFallback : imageUrl}
           alt={name}
           width={280}
           height={200}
@@ -90,6 +91,7 @@ export const RecipeCard = ({ recipe }: Props) => {
       <CardFooter className="p-3 pt-0">
         <Link
           to={`/recetas/${id}`}
+          // onMouseEnter={() => prefetchRecipe && prefetchRecipe(id)}
           className={buttonVariants({
             className: "flex gap-3 font-semibold text-lg w-full",
           })}

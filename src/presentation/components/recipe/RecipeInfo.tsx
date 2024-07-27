@@ -6,6 +6,7 @@ import { Badge } from "../ui/badge";
 import { buttonVariants } from "../ui/button";
 
 import { Recipe } from "@/core/entities/recipe.entity";
+import { GLOBALS } from "@/config/helpers/constants";
 
 import { ArrowRight, Clock, Flame, User } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -29,7 +30,7 @@ export const RecipeInfo = ({ recipe,showButton }: Props) => {
     <section className="flex flex-col md:flex-row justify-center items-center gap-4">
       <img
         className="w-full md:w-80 h-96 md:h-64 object-cover object-center rounded-xl"
-        src={imageUrl}
+        src={!imageUrl ? GLOBALS.imageUrlFallback : imageUrl}
         alt="Imagen de receta"
         width="384"
         height="240"
@@ -66,8 +67,7 @@ export const RecipeInfo = ({ recipe,showButton }: Props) => {
           <Link
             to={`/recetas/${recipe.id}`}
             className={buttonVariants({
-              className:
-                "flex gap-3 font-semibold text-lg w-full md:w-auto",
+              className: "flex gap-3 font-semibold text-lg w-full md:w-auto",
             })}
           >
             Ver receta <ArrowRight className="w-5 h-5" />
