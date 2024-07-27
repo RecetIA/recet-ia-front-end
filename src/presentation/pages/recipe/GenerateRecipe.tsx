@@ -47,7 +47,7 @@ export const GenerateRecipe = () => {
 
   return (
     <div className="flex flex-col justify-center h-full">
-      <section className="flex flex-col justify-center items-center p-2 text-center">
+      <section className="flex flex-col justify-center items-center text-center">
         <TypographyH2 className="font-semibold mb-3 text-gray-700">
           Tus ingredientes aquí
         </TypographyH2>
@@ -95,7 +95,7 @@ export const GenerateRecipe = () => {
       </section>
 
       {recipeMutation.data ? (
-        <RecipeInfo recipe={recipeMutation.data} />
+        <RecipeInfo recipe={recipeMutation.data} showButton />
       ) : (
         <>
           <Button

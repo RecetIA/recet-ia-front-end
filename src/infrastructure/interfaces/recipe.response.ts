@@ -21,7 +21,7 @@ interface Recipe {
   observations: string;
 }
 
-interface Nutritional {
+export interface Nutritional {
   summary: string;
   values: Value[];
 }

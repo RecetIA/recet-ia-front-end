@@ -1,3 +1,4 @@
+import { Ingredient, Nutritional } from "@/infrastructure/interfaces/recipe.response";
 
 export interface Recipe {
   id: string;
@@ -7,4 +8,10 @@ export interface Recipe {
   cookTimeInMins: number;
   calories: number;
   servings: number;
+}
+
+export interface FullRecipe extends Recipe {
+  ingredients: Ingredient[];
+  steps: string[];
+  nutritional: Nutritional;
 }

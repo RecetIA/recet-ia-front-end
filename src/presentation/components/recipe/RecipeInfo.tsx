@@ -9,12 +9,14 @@ import { Recipe } from "@/core/entities/recipe.entity";
 import { ArrowRight, Clock, Flame, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import { buttonVariants } from "../ui/button";
+import { TypographyH2 } from "../shared/TypographyH2";
 
 interface Props {
   recipe: Recipe;
+  showButton?: boolean;
 }
 
-export const RecipeInfo = ({ recipe }: Props) => {
+export const RecipeInfo = ({ recipe,showButton }: Props) => {
   const {
     name,
     description,
@@ -27,7 +29,7 @@ export const RecipeInfo = ({ recipe }: Props) => {
   return (
     <section className="flex flex-col md:flex-row justify-center items-center gap-4">
       <img
-        className="w-full md:w-96 h-96 md:h-64 object-cover object-center rounded-xl"
+        className="w-full md:w-80 h-96 md:h-64 object-cover object-center rounded-xl"
         src={imageUrl}
         alt="Imagen de receta"
         width="384"
@@ -38,10 +40,11 @@ export const RecipeInfo = ({ recipe }: Props) => {
         <Badge className="bg-primary/20 hover:bg-primary/20 text-primary text-base">
           Receta
         </Badge>
-        <TypographyH3 className="font-bold uppercase text-gray-700 text-balance w-full">
+
+        <TypographyH2 className="font-bold uppercase text-gray-700 text-balance w-full">
           {name}
-        </TypographyH3>
-        <TypographyP className="text-gray-700 text-balance">
+        </TypographyH2>
+        <TypographyP className="text-gray-700 text-pretty sm:text-balance">
           {description}
         </TypographyP>
 
@@ -60,15 +63,17 @@ export const RecipeInfo = ({ recipe }: Props) => {
           />
         </section>
 
-        <Link
-          to={`/receta/${recipe.id}`}
-          className={buttonVariants({
-            className:
-              "flex gap-3 font-semibold text-base mt-2 w-full md:w-auto",
-          })}
-        >
-          Ver receta <ArrowRight />
-        </Link>
+        {showButton && (
+          <Link
+            to={`/recetas/${recipe.id}`}
+            className={buttonVariants({
+              className:
+                "flex gap-3 font-semibold text-lg w-full md:w-auto",
+            })}
+          >
+            Ver receta <ArrowRight className="w-5 h-5" />
+          </Link>
+        )}
       </div>
     </section>
   );
