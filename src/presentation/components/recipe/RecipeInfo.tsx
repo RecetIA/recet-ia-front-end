@@ -50,15 +50,15 @@ export const RecipeInfo = ({ recipe,showButton }: Props) => {
         <section className="flex flex-col sm:flex-row gap-3 w-full">
           <MiniCard
             title={`${cookTimeInMins} min`}
-            icon={<Clock width="1rem" height="1rem" />}
+            icon={<Clock className="w-6 h-6" />}
           />
           <MiniCard
             title={`${calories} cal`}
-            icon={<Flame width="1rem" height="1rem" />}
+            icon={<Flame className="w-6 h-6" />}
           />
           <MiniCard
             title={`${servings} ${servings === 1 ? "porción" : "porciones"}`}
-            icon={<User width="1rem" height="1rem" />}
+            icon={<User className="w-6 h-6" />}
           />
         </section>
 
