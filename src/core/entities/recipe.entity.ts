@@ -15,3 +15,14 @@ export interface FullRecipe extends Recipe {
   steps: string[];
   nutritional: Nutritional;
 }
+
+export interface ShortRecipe{
+  id: string;
+  name: string;
+  imageUrl: string;
+  quantityIngredients: number;
+  cookTimeInMins: number;
+  calories: number;
+  servings: number;
+  matchRate: number;
+}

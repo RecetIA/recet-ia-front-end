@@ -1,4 +1,4 @@
-import { FullRecipe, Recipe } from "@/core/entities/recipe.entity";
+import { FullRecipe, Recipe, ShortRecipe } from "@/core/entities/recipe.entity";
 import { RecipeResponse } from "../interfaces/recipe.response";
 
 export class RecipeMapper {
@@ -20,7 +20,19 @@ export class RecipeMapper {
       ingredients: response.recipe.ingredients,
       steps: response.recipe.steps,
       nutritional: response.recipe.nutritional,
-      
+    };
+  }
+
+  static fromFullRecipeToEntity(response: RecipeResponse): ShortRecipe {
+    return {
+      id: response.id,
+      name: response.recipe.title,
+      imageUrl: response.img,
+      quantityIngredients: response.recipe.ingredients.length,
+      cookTimeInMins: response.recipe.cookTimeInMins,
+      calories: response.recipe.calories,
+      servings: response.recipe.servings,
+      matchRate: response.recipe.matchRate,
     };
   }
 }
