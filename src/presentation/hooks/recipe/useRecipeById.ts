@@ -10,7 +10,12 @@ export const useRecipe = (id: string, token: string) => {
     queryFn: () => UseCases.getRecipeByIdUseCase(apiFetcher, id, token),
   });
 
+  const quantityIngredientes = queryRecipe.data?.ingredients.length;
+  const quantitySteps = queryRecipe.data?.steps.length;
+
   return {
     queryRecipe,
+    quantityIngredientes,
+    quantitySteps,
   };
 };

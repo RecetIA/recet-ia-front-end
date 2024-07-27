@@ -1,15 +1,14 @@
-import { TypographyH3 } from "../shared/TypographyH3";
+import { TypographyH2 } from "../shared/TypographyH2";
 import { TypographyP } from "../shared/TypographyP";
 import { MiniCard } from "./MiniCard";
 
 import { Badge } from "../ui/badge";
+import { buttonVariants } from "../ui/button";
 
 import { Recipe } from "@/core/entities/recipe.entity";
 
 import { ArrowRight, Clock, Flame, User } from "lucide-react";
 import { Link } from "react-router-dom";
-import { buttonVariants } from "../ui/button";
-import { TypographyH2 } from "../shared/TypographyH2";
 
 interface Props {
   recipe: Recipe;

@@ -33,6 +33,7 @@ interface Value {
 }
 
 export interface Ingredient {
+  id: string;
   name: string;
   measure: Measure;
   quantity: number;
