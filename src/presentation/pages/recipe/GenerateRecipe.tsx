@@ -1,15 +1,21 @@
+import { useLoginMutation, useRecipeMutation } from "@/presentation/hooks";
 
-import { TypographyP } from '@/presentation/components/shared/TypographyP';
-import { TypographyH2 } from '../../components/shared/TypographyH2';
+import { TypographyH2 } from "@/presentation/components/shared/TypographyH2";
+import { TypographyP } from "@/presentation/components/shared/TypographyP";
+import { RecipeInfo } from "@/presentation/components/recipe/RecipeInfo";
 
-import { Badge } from '@/presentation/components/ui/badge';
-import { Button } from '@/presentation/components/ui/button';
-import MultipleSelector from '@/presentation/components/ui/multiple-selector';
+import { Badge } from "@/presentation/components/ui/badge";
+import { Button } from "@/presentation/components/ui/button";
+import MultipleSelector from "@/presentation/components/ui/multiple-selector";
+import { toast } from "@/presentation/components/ui/use-toast";
+import { Spinner } from "@/presentation/components/ui/spinner";
 
-import { ingredientsOptions, useIngredientsStore } from '@/presentation/store/ingredients-store';
+import {
+  ingredientsOptions,
+  useIngredientsStore,
+} from "@/presentation/store/ingredients-store";
 
-import { Sparkles } from 'lucide-react';
-
+import { Sparkles } from "lucide-react";
 
 export const GenerateRecipe = () => {
   const ingredients = useIngredientsStore((state) => state.ingredients);
@@ -17,11 +23,30 @@ export const GenerateRecipe = () => {
   const maxSelectedIngredients = useIngredientsStore(
     (state) => state.maxSelectedIngredients
   );
-  const handleMaxSelected = useIngredientsStore((state) => state.handleMaxSelected);
+  const handleMaxSelected = useIngredientsStore(
+    (state) => state.handleMaxSelected
+  );
 
+  const { token } = useLoginMutation();
+  const { recipeMutation, isLoadingRecipe } = useRecipeMutation(
+    "669c4795b998905e2e6e4b30",
+    token!
+  );
+
+  const handleGenerateRecipe = () => {
+    if (ingredients.length === 0) {
+      toast({
+        title: "Debes seleccionar al menos un ingrediente",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    recipeMutation.mutate();
+  }
 
   return (
-    <div>
+    <div className="flex flex-col justify-center h-full">
       <section className="flex flex-col justify-center items-center p-2 text-center">
         <TypographyH2 className="font-semibold mb-3 text-gray-700">
           Tus ingredientes aquí
@@ -38,7 +63,9 @@ export const GenerateRecipe = () => {
         <MultipleSelector
           className="w-full min-h-12 mt-2 text-lg rounded-xl"
           value={ingredients}
-          onChange={(value) => useIngredientsStore.setState({ ingredients: value })}
+          onChange={(value) =>
+            useIngredientsStore.setState({ ingredients: value })
+          }
           onMaxSelected={handleMaxSelected}
           defaultOptions={ingredientsOptions}
           placeholder="Ingresa tus ingredientes"
@@ -65,24 +92,38 @@ export const GenerateRecipe = () => {
             </Button>
           ))}
         </div>
-
-        <Button size="xl" className="flex gap-3 font-semibold mb-2">
-          Generar receta <Sparkles />
-        </Button>
       </section>
 
-      <hr className="border-gray-300" />
+      {recipeMutation.data ? (
+        <RecipeInfo recipe={recipeMutation.data} />
+      ) : (
+        <>
+          <Button
+            onClick={handleGenerateRecipe}
+            size="xl"
+            className="flex gap-3 font-semibold mb-4 mx-auto"
+          >
+            Generar receta {!isLoadingRecipe && <Sparkles />}
+            <Spinner
+              size="small"
+              show={isLoadingRecipe}
+              className="text-slate-300"
+            />
+          </Button>
 
-      <section className="my-5">
-        <TypographyH2 className="font-semibold mb-3 text-primary text-center">
-          Genera una receta <br />
-          para ver los resultados
-        </TypographyH2>
-        <TypographyP className="text-gray-700 text-center text-balance">
-          Nuestra Inteligencia Artificial te brindará distintas recomendaciones
-          de recetas para ti!
-        </TypographyP>
-      </section>
+          <hr className="border-gray-300" />
+          <section className="my-5">
+            <TypographyH2 className="font-semibold mb-3 text-primary text-center">
+              Genera una receta <br />
+              para ver los resultados
+            </TypographyH2>
+            <TypographyP className="text-gray-700 text-center text-balance">
+              Nuestra Inteligencia Artificial te brindará distintas
+              recomendaciones de recetas para ti!
+            </TypographyP>
+          </section>
+        </>
+      )}
     </div>
   );
-}
+};

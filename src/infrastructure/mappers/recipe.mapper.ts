@@ -7,7 +7,7 @@ export class RecipeMapper {
       id: response.id,
       name: response.recipe.title,
       description: response.recipe.description,
-      image: response.img,
+      imageUrl: response.img,
       cookTimeInMins: response.recipe.cookTimeInMins,
       calories: response.recipe.calories,
       servings: response.recipe.servings,

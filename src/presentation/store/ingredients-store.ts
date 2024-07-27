@@ -140,6 +140,7 @@ export const useIngredientsStore = create<IngredientsState>((set, get) => ({
   maxSelectedIngredients: 4,
   addIngredient: (ingredient) => {
     const { ingredients, maxSelectedIngredients, handleMaxSelected } = get();
+
     if (ingredients.some((i) => i.value === ingredient.value)) return;
 
     if (ingredients.length >= maxSelectedIngredients) {
@@ -148,13 +149,13 @@ export const useIngredientsStore = create<IngredientsState>((set, get) => ({
     }
 
     set((state) => ({
-     ingredients: [...state.ingredients, ingredient],
+      ingredients: [...state.ingredients, ingredient],
     }));
   },
   handleMaxSelected: (maxLimit) => {
     toast({
       title: `Solo puedes seleccionar ${maxLimit} ingredientes`,
-      variant: 'destructive',
+      variant: "destructive",
     });
   },
 }));
