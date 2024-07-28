@@ -1,18 +1,27 @@
-
-import { useFavoriteMutation, useLoginMutation, useRecipe } from "@/presentation/hooks";
+import {
+  useFavoriteMutation,
+  useLoginMutation,
+  useRecipe,
+} from "@/presentation/hooks";
 
 import { TypographyH3 } from "@/presentation/components/shared/TypographyH3";
-import { Button } from "@/presentation/components/ui/button";
+import { TypographyP } from "@/presentation/components/shared/TypographyP";
 
 import { RecipeInfo } from "@/presentation/components/recipe/RecipeInfo";
 import { IngredientsList } from "@/presentation/components/recipe/IngredientsList";
 
-import { Formatter } from "@/config/helpers/formatter";
+import { Button } from "@/presentation/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/presentation/components/ui/tooltip";
 
-import {  useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, Heart } from "lucide-react";
-import { TypographyP } from "@/presentation/components/shared/TypographyP";
+import { Formatter } from "@/config/helpers/formatter";
 import { cn } from "@/presentation/lib/utils";
+
+import { useNavigate, useParams } from "react-router-dom";
+import { ArrowLeft, Heart } from "lucide-react";
 
 export const FullRecipe = () => {
   const params = useParams();
@@ -23,16 +32,12 @@ export const FullRecipe = () => {
     params.id!,
     token!
   );
-  const { favoriteMutation } = useFavoriteMutation(token!,params.id!);
-  console.log(favoriteMutation.data);
-  console.log(queryRecipe.data?.isFavorite);
+  const { favoriteMutation } = useFavoriteMutation(token!, params.id!);
 
-  const [
-    firstHalfIngredients,
-    secondHalfIngredients
-  ] = Formatter.splitArray(queryRecipe.data?.ingredients || []);
+  const [firstHalfIngredients, secondHalfIngredients] = Formatter.splitArray(
+    queryRecipe.data?.ingredients || []
+  );
 
-  // TODO: Agregar .fill-primary a icons cuando hay un evento
   return (
     <div className="bg-slate-100 my-4 rounded-xl shadow-sm border border-gray-200 mx-2 md:mx-0">
       <section className="flex justify-between items-center py-4 px-6">
@@ -45,17 +50,31 @@ export const FullRecipe = () => {
         </Button>
 
         <div className="flex gap-3">
-          <Button
-            onClick={() => favoriteMutation.mutate({ recipeId: params.id! })}
-            size="icon"
-            className="w-8 h-8 rounded-lg bg-primary/20 hover:bg-primary/30 text-primary shadow-none transition-all"
-          >
-            <Heart
-              className={cn({
-                "fill-primary": queryRecipe.data?.isFavorite,
-              })}
-            />
-          </Button>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                onClick={() =>
+                  favoriteMutation.mutate({ recipeId: params.id! })
+                }
+                size="icon"
+                className="w-8 h-8 rounded-lg bg-primary/20 hover:bg-primary/30 text-primary shadow-none transition-all"
+              >
+                <Heart
+                  className={cn({
+                    "fill-primary": queryRecipe.data?.isFavorite,
+                  })}
+                />
+              </Button>
+            </TooltipTrigger>
+
+            <TooltipContent side="left" className="text-slate-200">
+              <p className="font-semibold">
+                {queryRecipe.data?.isFavorite
+                  ? "Quitar de favoritos"
+                  : "Añadir a favoritos"}
+              </p>
+            </TooltipContent>
+          </Tooltip>
         </div>
       </section>
 

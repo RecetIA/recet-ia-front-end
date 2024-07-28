@@ -91,7 +91,7 @@ export const RecipeCard = ({ recipe, prefetchRecipe }: Props) => {
       <CardFooter className="p-3 pt-0">
         <Link
           to={`/recetas/${id}`}
-          // onMouseEnter={() => prefetchRecipe && prefetchRecipe(id)}
+          onMouseEnter={() => prefetchRecipe && prefetchRecipe(id)}
           className={buttonVariants({
             className: "flex gap-3 font-semibold text-lg w-full",
           })}
