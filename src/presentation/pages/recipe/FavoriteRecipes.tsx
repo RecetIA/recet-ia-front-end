@@ -15,7 +15,7 @@ export const FavoriteRecipes = () => {
   return (
     <div className="p-3">
       <TypographyH2 className="flex items-center gap-2 text-gray-700">
-        <Heart className="w-7 h-7" /> Mis favoritos
+        <Heart className="w-8 h-8" /> Mis favoritos
       </TypographyH2>
       <TypographyP className="text-gray-700 text-pretty">
         En esta sección verás todas tus recetas favoritas

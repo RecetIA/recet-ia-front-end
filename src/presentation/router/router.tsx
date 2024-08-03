@@ -13,9 +13,9 @@ import { Home } from "../pages/home/Home";
 import { GenerateRecipe } from "../pages/recipe/GenerateRecipe";
 import { FavoriteRecipes } from "../pages/recipe/FavoriteRecipes";
 import { FullRecipe } from "../pages/recipe/FullRecipe";
+import { SavedRecipes } from "../pages/recipe/SavedRecipes";
 
-
-import { Heart, ReceiptText } from "lucide-react";
+import { Bookmark, Heart, ReceiptText } from "lucide-react";
 
 
 const authRoutes = [
@@ -61,6 +61,12 @@ export const recipesRoutes = [
     component: <FavoriteRecipes />,
     title: "Mis favoritos",
     icon: <Heart width="1.2rem" height="1.2rem" />,
+  },
+  {
+    to: "/recetas/guardados",
+    component: <SavedRecipes />,
+    title: "Guardados",
+    icon: <Bookmark width="1.2rem" height="1.2rem" />,
   },
   {
     to: "/recetas/:id",

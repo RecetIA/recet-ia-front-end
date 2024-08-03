@@ -34,6 +34,7 @@ export class RecipeMapper {
       calories: response.recipe.calories,
       servings: response.recipe.servings,
       matchRate: response.recipe.matchRate,
+      observations: response.recipe.observations,
     };
   }
 }
