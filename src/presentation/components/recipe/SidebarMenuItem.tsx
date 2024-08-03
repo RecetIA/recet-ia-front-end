@@ -18,7 +18,7 @@ export const SidebarMenuItem = ({ to, icon, title }: Props) => {
         return `flex items-center gap-2 p-2 pl-4 transition-colors ${activeClasses}`;
       }}
     >
-      <span className="h-4">
+      <span className="h-5">
         {icon}
       </span>
       <p className="text-base font-semibold">{title}</p>
