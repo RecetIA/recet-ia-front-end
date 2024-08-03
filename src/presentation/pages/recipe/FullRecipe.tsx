@@ -79,7 +79,7 @@ export const FullRecipe = () => {
       </section>
 
       <section className="p-6 bg-white">
-        {queryRecipe.data && <RecipeInfo recipe={queryRecipe.data} />}
+        {queryRecipe.data && <RecipeInfo recipe={queryRecipe.data} isLoading={queryRecipe.isLoading} />}
       </section>
 
       <section className="py-6 px-10">

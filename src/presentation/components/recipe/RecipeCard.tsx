@@ -40,6 +40,7 @@ export const RecipeCard = ({ recipe, prefetchRecipe }: Props) => {
           width={280}
           height={200}
         />
+        
         <Badge
           variant="secondary"
           className="absolute -top-0.5 flex items-center gap-1 bg-slate-200 !m-0"

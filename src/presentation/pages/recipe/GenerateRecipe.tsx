@@ -29,7 +29,7 @@ export const GenerateRecipe = () => {
 
   const { token } = useLoginMutation();
   const { recipeMutation, isLoadingRecipe } = useRecipeMutation(
-    "669c4d60b998905e2e6e4b72",
+    "66ad3bc785c728373a0fb180",
     token!
   );
 
@@ -94,9 +94,15 @@ export const GenerateRecipe = () => {
         </div>
       </section>
 
-      {recipeMutation.data ? (
-        <RecipeInfo recipe={recipeMutation.data} showButton />
-      ) : (
+      {(isLoadingRecipe || recipeMutation.data) && (
+        <RecipeInfo
+          recipe={recipeMutation.data!}
+          isLoading={isLoadingRecipe}
+          showButton
+        />
+      )}
+
+      {!recipeMutation.data && !isLoadingRecipe && (
         <>
           <Button
             onClick={handleGenerateRecipe}

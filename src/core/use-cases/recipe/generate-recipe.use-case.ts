@@ -13,7 +13,7 @@ export const generateRecipeUseCase = async (
   id: string,
   token: string
 ): Promise<Recipe> => {
-  await sleep(1500);
+  await sleep(3000);
   const recipe = await fetcher.get<RecipeResponse>(`/recipe/${id}`, {}, token);
   
   return RecipeMapper.fromRecipeResultToEntity(recipe);

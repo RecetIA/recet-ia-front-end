@@ -26,4 +26,5 @@ export interface ShortRecipe{
   calories: number;
   servings: number;
   matchRate: number;
+  observations: string;
 }
