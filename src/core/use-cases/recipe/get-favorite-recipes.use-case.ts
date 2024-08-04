@@ -9,6 +9,5 @@ export const getFavoriteRecipesUseCase = async (
   token: string
 ): Promise<ShortRecipe[]> => {
   const recipe = await fetcher.get<RecipeResponse[]>(`/recipe/favorites`, {}, token);
-
   return recipe.map(RecipeMapper.fromFullRecipeToEntity);
 };

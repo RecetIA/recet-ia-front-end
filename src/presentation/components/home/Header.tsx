@@ -23,7 +23,7 @@ export const Header = () => {
           to="/recetas/crear-receta"
           className={buttonVariants({
             variant: "link",
-            className: "!text-base text-slate-800",
+            className: "!text-base text-slate-800 hidden sm:block",
           })}
         >
           Haz tu receta
