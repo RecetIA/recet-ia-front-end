@@ -5,11 +5,13 @@ import { useIngredientsStore } from "@/presentation/store/ingredients-store";
 import { useMutation } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
-export const useRecipeMutation = (id: string, token: string) => {
+export const useRecipeMutation = (token: string) => {
   const [isLoadingRecipe, setIsLoadingRecipe] = useState(false);
 
   const generateRecipeMutation = useMutation({
-    mutationFn: () => UseCases.generateRecipeUseCase(apiFetcher, id, token),
+    mutationFn: (body: Record<string, string | string[]>) => {
+      return UseCases.generateRecipeUseCase(apiFetcher, body, token);
+    },
     onMutate: () => {
       setIsLoadingRecipe(true);
     },

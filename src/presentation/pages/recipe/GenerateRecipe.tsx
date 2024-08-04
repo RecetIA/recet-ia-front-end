@@ -20,18 +20,11 @@ import { Sparkles } from "lucide-react";
 export const GenerateRecipe = () => {
   const ingredients = useIngredientsStore((state) => state.ingredients);
   const addIngredient = useIngredientsStore((state) => state.addIngredient);
-  const maxSelectedIngredients = useIngredientsStore(
-    (state) => state.maxSelectedIngredients
-  );
-  const handleMaxSelected = useIngredientsStore(
-    (state) => state.handleMaxSelected
-  );
+  const maxSelectedIngredients = useIngredientsStore((state) => state.maxSelectedIngredients);
+  const handleMaxSelected = useIngredientsStore((state) => state.handleMaxSelected);
 
   const { token } = useLoginMutation();
-  const { recipeMutation, isLoadingRecipe } = useRecipeMutation(
-    "66ad3bc785c728373a0fb180",
-    token!
-  );
+  const { recipeMutation, isLoadingRecipe } = useRecipeMutation(token!);
 
   const handleGenerateRecipe = () => {
     if (ingredients.length === 0) {
@@ -42,8 +35,10 @@ export const GenerateRecipe = () => {
       return;
     }
 
-    recipeMutation.mutate();
-  }
+    recipeMutation.mutate({
+      ingredients: ingredients.map((ingredient) => ingredient.label),
+    });
+  };
 
   return (
     <div className="flex flex-col justify-center h-full">

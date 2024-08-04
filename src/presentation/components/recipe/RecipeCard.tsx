@@ -40,12 +40,12 @@ export const RecipeCard = ({ recipe, prefetchRecipe }: Props) => {
           width={280}
           height={200}
         />
-        
+
         <Badge
           variant="secondary"
           className="absolute -top-0.5 flex items-center gap-1 bg-slate-200 !m-0"
         >
-          <Target className="w-4 h-4" /> {!imageUrl ? "0" : matchRate} %
+          <Target className="w-4 h-4" /> {matchRate} %
         </Badge>
       </CardHeader>
 

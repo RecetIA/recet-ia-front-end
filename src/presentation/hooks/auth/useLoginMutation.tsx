@@ -13,7 +13,7 @@ export const useLoginMutation = () => {
 
   const loginMutation = useMutation({
     mutationFn: (body: Record<string, string>) => {
-      return  UseCases.loginUserUseCase(apiFetcher, body)
+      return UseCases.loginUserUseCase(apiFetcher, body)
     },
     onMutate: () => {
       setIsLoadingLogin(true);
