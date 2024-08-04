@@ -46,7 +46,7 @@ export const GenerateRecipe = () => {
   }
 
   return (
-    <div className="flex flex-col justify-center min-h-full py-10">
+    <div className="flex flex-col justify-center min-h-full py-14 md:py-10">
       <section className="flex flex-col justify-center h-full items-center text-center">
         <TypographyH2 className="font-semibold mb-3 text-gray-700">
           Tus ingredientes aquí
