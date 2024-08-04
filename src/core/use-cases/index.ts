@@ -6,6 +6,7 @@ export * from "./auth/confirm-account.use-case";
 export * from "./auth/check-user-token.use-case";
 
 export * from "./recipe/generate-recipe.use-case";
+export * from "./recipe/generate-recipe-image.use-case";
 export * from "./recipe/get-favorite-recipes.use-case";
 export * from "./recipe/add-favorite-recipe.use-case";
 export * from "./recipe/get-saved-recipes.use-case";

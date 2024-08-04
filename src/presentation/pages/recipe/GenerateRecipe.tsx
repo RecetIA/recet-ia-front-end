@@ -1,4 +1,9 @@
-import { useLoginMutation, useRecipeMutation } from "@/presentation/hooks";
+import {
+  useLoginMutation,
+  useRecipe,
+  useRecipeImageMutation,
+  useRecipeMutation,
+} from "@/presentation/hooks";
 
 import { TypographyH2 } from "@/presentation/components/shared/TypographyH2";
 import { TypographyP } from "@/presentation/components/shared/TypographyP";
@@ -20,12 +25,18 @@ import { Sparkles } from "lucide-react";
 export const GenerateRecipe = () => {
   const ingredients = useIngredientsStore((state) => state.ingredients);
   const addIngredient = useIngredientsStore((state) => state.addIngredient);
-  const maxSelectedIngredients = useIngredientsStore((state) => state.maxSelectedIngredients);
-  const handleMaxSelected = useIngredientsStore((state) => state.handleMaxSelected);
+  const maxSelectedIngredients = useIngredientsStore(
+    (state) => state.maxSelectedIngredients
+  );
+  const handleMaxSelected = useIngredientsStore(
+    (state) => state.handleMaxSelected
+  );
 
   const { token } = useLoginMutation();
-  const { recipeMutation, isLoadingRecipe } = useRecipeMutation(token!);
+  const { recipeMutation } = useRecipeMutation(token!);
+  const { queryRecipe } = useRecipe("66aee84dec377bcfe0df3a99", token!);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleGenerateRecipe = () => {
     if (ingredients.length === 0) {
       toast({
@@ -38,6 +49,8 @@ export const GenerateRecipe = () => {
     recipeMutation.mutate({
       ingredients: ingredients.map((ingredient) => ingredient.label),
     });
+
+    useIngredientsStore.setState({ ingredients: [] });
   };
 
   return (
@@ -88,8 +101,13 @@ export const GenerateRecipe = () => {
           ))}
         </div>
       </section>
+      <RecipeInfo
+        recipe={queryRecipe.data!}
+        isLoading={queryRecipe.isLoading}
+        showButton
+      />
 
-      {(isLoadingRecipe || recipeMutation.data) && (
+      {/*  {(isLoadingRecipe || recipeMutation.data) && (
         <RecipeInfo
           recipe={recipeMutation.data!}
           isLoading={isLoadingRecipe}
@@ -124,7 +142,7 @@ export const GenerateRecipe = () => {
             </TypographyP>
           </section>
         </>
-      )}
+      )} */}
     </div>
   );
 };

@@ -6,6 +6,7 @@ export * from "./auth/useCheckUserToken";
 export * from "./auth/useLoginMutation";
 
 export * from "./recipe/useRecipeMutation";
+export * from "./recipe/useRecipeImageMutation";
 export * from "./recipe/useFavoriteRecipes";
 export * from "./recipe/useSavedRecipes";
 export * from "./recipe/useFavoriteMutation";
