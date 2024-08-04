@@ -2,6 +2,7 @@ import {
   useFavoriteMutation,
   useLoginMutation,
   useRecipe,
+  useRecipeImageMutation,
 } from "@/presentation/hooks";
 
 import { TypographyH3 } from "@/presentation/components/shared/TypographyH3";
@@ -33,6 +34,7 @@ export const FullRecipe = () => {
     token!
   );
   const { favoriteMutation } = useFavoriteMutation(token!, params.id!);
+  const { recipeImgMutation,isLoadingRecipeImg,urlImg } = useRecipeImageMutation(token!);
 
   const [firstHalfIngredients, secondHalfIngredients] = Formatter.splitArray(
     queryRecipe.data?.ingredients || []
@@ -79,7 +81,21 @@ export const FullRecipe = () => {
       </section>
 
       <section className="p-6 bg-white">
-        {queryRecipe.data && <RecipeInfo recipe={queryRecipe.data} isLoading={queryRecipe.isLoading} />}
+        {queryRecipe.data && (
+          <RecipeInfo
+            recipe={queryRecipe.data}
+            isLoading={queryRecipe.isLoading}
+            imgOptions={{
+              isLoadingImg: isLoadingRecipeImg,
+              urlImg,
+              handleGenerateImg: () =>
+                recipeImgMutation.mutate({
+                  prompt: queryRecipe.data!.name,
+                  recipeId: queryRecipe.data!.id,
+                }),
+            }}
+          />
+        )}
       </section>
 
       <section className="py-6 px-10">

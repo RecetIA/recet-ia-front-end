@@ -4,35 +4,83 @@ import { MiniCard } from "./MiniCard";
 
 import { Skeleton } from "../ui/skeleton";
 import { Badge } from "../ui/badge";
-import { buttonVariants } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/presentation/components/ui/tooltip";
 
 import { Recipe } from "@/core/entities/recipe.entity";
 import { GLOBALS } from "@/config/helpers/constants";
 
-import { ArrowRight, Clock, Flame, User } from "lucide-react";
+import { ArrowRight, Clock, Flame, ImageUp, User } from "lucide-react";
 import { Link } from "react-router-dom";
+import { IconAvatar } from "../shared/IconAvatar";
+import { Spinner } from "../ui/spinner";
+import { cn } from "@/presentation/lib/utils";
+
+type ImgOptions = {
+  isLoadingImg: boolean;
+  urlImg: string;
+  handleGenerateImg: () => void;
+};
 
 interface Props {
   recipe: Recipe;
   isLoading: boolean;
+  imgOptions: ImgOptions;
   showButton?: boolean;
 }
 
-export const RecipeInfo = ({ recipe, isLoading, showButton }: Props) => {
-
+export const RecipeInfo = ({
+  recipe,
+  isLoading,
+  imgOptions,
+  showButton,
+}: Props) => {
+  const { isLoadingImg, urlImg, handleGenerateImg } = imgOptions;
   return (
     <section className="flex flex-col md:flex-row justify-center items-center gap-4">
-      {isLoading ? (
-        <Skeleton className="w-full md:w-80 h-[31.25rem] md:h-64 rounded-xl" />
-      ) : (
-        <img
-          className="w-full md:w-80 md:h-64 object-cover object-center rounded-xl"
-          src={!recipe?.imageUrl ? GLOBALS.imageUrlFallback : recipe?.imageUrl}
-          alt="Imagen de receta"
-          width="384"
-          height="240"
-        />
-      )}
+      <Tooltip>
+        <TooltipTrigger>
+          {isLoadingImg ? (
+            <Skeleton className="w-full md:w-80 h-[31.25rem] md:h-64 rounded-xl" />
+          ) : (
+            <figure className="relative">
+              <img
+                className="w-full md:w-80 md:h-64 object-cover object-center rounded-xl border border-gray-200"
+                src={
+                  recipe?.imageUrl
+                    ? recipe?.imageUrl
+                    : urlImg ? urlImg : GLOBALS.imageUrlFallback
+                }
+                alt="Imagen de receta"
+                width="384"
+                height="240"
+              />
+              {recipe?.imageUrl || urlImg ? null: (
+                <IconAvatar
+                  className="absolute bottom-3 right-3 lg:left-[5.8rem] lg:top-[5.6rem] bg-white text-slate-600 hover:text-slate-800 lg:w-11 lg:h-11 cursor-pointer transition-colors"
+                  icon={<ImageUp className="w-6 h-6" />}
+                  handleClick={handleGenerateImg}
+                />
+              )}
+            </figure>
+          )}
+        </TooltipTrigger>
+
+        <TooltipContent
+          side="top"
+          className="text-white bg-gray-700 font-semibold"
+        >
+          <p>
+            {isLoadingImg
+              ? "Generando imagen..."
+              : "Genera una nueva imagen para esta receta"}
+          </p>
+        </TooltipContent>
+      </Tooltip>
 
       <div className="flex-1 flex flex-col justify-start items-start gap-2 w-full">
         <Badge className="bg-primary/20 hover:bg-primary/20 text-primary text-base">
@@ -68,21 +116,39 @@ export const RecipeInfo = ({ recipe, isLoading, showButton }: Props) => {
             isLoading={isLoading}
           />
           <MiniCard
-            title={`${recipe?.servings} ${recipe?.servings === 1 ? "porción" : "porciones"}`}
+            title={`${recipe?.servings} ${
+              recipe?.servings === 1 ? "porción" : "porciones"
+            }`}
             icon={<User className="w-6 h-6" />}
             isLoading={isLoading}
           />
         </section>
 
         {showButton && (
-          <Link
-            to={`/recetas/${recipe?.id}`}
-            className={buttonVariants({
-              className: "flex gap-3 font-semibold text-lg w-full md:w-auto",
+          <Button
+            className={cn({
+              "pointer-events-none cursor-not-allowed": isLoadingImg,
             })}
+            asChild
           >
-            Ver receta <ArrowRight className="w-5 h-5" />
-          </Link>
+            <Link
+              to={`/recetas/${recipe?.id}`}
+              className={buttonVariants({
+                className: "flex gap-3 font-semibold text-lg w-full md:w-auto",
+              })}
+            >
+              {isLoadingImg ? "Generando imagen..." : "Ver receta"}
+              {isLoadingImg ? (
+                <Spinner
+                  size="small"
+                  show={isLoadingImg}
+                  className="text-slate-300"
+                />
+              ) : (
+                <ArrowRight className="w-5 h-5" />
+              )}
+            </Link>
+          </Button>
         )}
       </div>
     </section>

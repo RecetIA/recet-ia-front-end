@@ -1,6 +1,5 @@
 import {
   useLoginMutation,
-  useRecipe,
   useRecipeImageMutation,
   useRecipeMutation,
 } from "@/presentation/hooks";
@@ -33,10 +32,9 @@ export const GenerateRecipe = () => {
   );
 
   const { token } = useLoginMutation();
-  const { recipeMutation } = useRecipeMutation(token!);
-  const { queryRecipe } = useRecipe("66aee84dec377bcfe0df3a99", token!);
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { recipeMutation,isLoadingRecipe } = useRecipeMutation(token!);
+  const { recipeImgMutation,isLoadingRecipeImg,urlImg } = useRecipeImageMutation(token!);
+  
   const handleGenerateRecipe = () => {
     if (ingredients.length === 0) {
       toast({
@@ -101,16 +99,20 @@ export const GenerateRecipe = () => {
           ))}
         </div>
       </section>
-      <RecipeInfo
-        recipe={queryRecipe.data!}
-        isLoading={queryRecipe.isLoading}
-        showButton
-      />
 
-      {/*  {(isLoadingRecipe || recipeMutation.data) && (
+      {(isLoadingRecipe || recipeMutation.data) && (
         <RecipeInfo
           recipe={recipeMutation.data!}
           isLoading={isLoadingRecipe}
+          imgOptions={{
+            urlImg,
+            isLoadingImg: isLoadingRecipeImg,
+            handleGenerateImg: () =>
+              recipeImgMutation.mutate({
+                prompt: recipeMutation.data!.name,
+                recipeId: recipeMutation.data!.id,
+              }),
+          }}
           showButton
         />
       )}
@@ -142,7 +144,7 @@ export const GenerateRecipe = () => {
             </TypographyP>
           </section>
         </>
-      )} */}
+      )}
     </div>
   );
 };

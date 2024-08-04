@@ -7,6 +7,7 @@ import { useMutation } from "@tanstack/react-query";
 
 export const useRecipeImageMutation = (token: string) => {
   const [isLoadingRecipeImg, setIsLoadingRecipeImg] = useState(false);
+  const [urlImg, setUrlImg] = useState("");
 
   const generateRecipeImgMutation = useMutation({
     mutationFn: (body: Record<string, string>) => {
@@ -15,7 +16,8 @@ export const useRecipeImageMutation = (token: string) => {
     onMutate: () => {
       setIsLoadingRecipeImg(true);
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
+      setUrlImg(data.urlImage);
       setIsLoadingRecipeImg(false);
     },
     onError: () => {
@@ -26,5 +28,6 @@ export const useRecipeImageMutation = (token: string) => {
   return {
     recipeImgMutation: generateRecipeImgMutation,
     isLoadingRecipeImg,
+    urlImg,
   };
 };
