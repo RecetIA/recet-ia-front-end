@@ -8,7 +8,7 @@ import { Link, NavLink } from "react-router-dom";
 
 export const Header = () => {
   const { token, logout} = useLoginMutation();
-  const { queryProfile } = useProfile(token!,logout);
+  const { queryProfile } = useProfile(token!);
 
   return (
     <header className="bg-white relative flex justify-between items-center py-3 px-2 md:px-8 z-20">
@@ -19,16 +19,6 @@ export const Header = () => {
       </div>
 
       <nav className="flex items-center gap-4">
-        <Link
-          to="/recetas/crear-receta"
-          className={buttonVariants({
-            variant: "link",
-            className: "!text-base text-slate-800 hidden sm:block",
-          })}
-        >
-          Haz tu receta
-        </Link>
-
         {token ? (
           <AvatarMenu
             user={queryProfile.data!}

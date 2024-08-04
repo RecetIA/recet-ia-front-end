@@ -41,7 +41,7 @@ export const RecipeInfo = ({
 }: Props) => {
   const { isLoadingImg, urlImg, handleGenerateImg } = imgOptions;
   return (
-    <section className="flex flex-col md:flex-row justify-center items-center gap-4">
+    <section className="flex flex-col lg:flex-row justify-center items-center gap-4">
       <Tooltip>
         <TooltipTrigger>
           {isLoadingImg ? (
@@ -49,7 +49,7 @@ export const RecipeInfo = ({
           ) : (
             <figure className="relative">
               <img
-                className="w-full md:w-80 md:h-64 object-cover object-center rounded-xl border border-gray-200"
+                className="w-full lg:w-80 lg:h-64 object-cover object-center rounded-xl border border-gray-200"
                 src={
                   recipe?.imageUrl
                     ? recipe?.imageUrl

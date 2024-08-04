@@ -33,10 +33,16 @@ export const useLoginMutation = () => {
     if (loginMutation.data) {
       saveToken(loginMutation.data as string);
       navitation("/");
-    }
-    
+    }    
 
   }, [loginMutation.data, saveToken, navitation]);
+
+  useEffect(() => {
+    if (!token) {
+      navitation("/auth/login");
+    }
+  }, [token, navitation]);
+  
   
 
   const logout = () => {

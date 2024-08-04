@@ -31,7 +31,7 @@ export const RecipeCard = ({ recipe, prefetchRecipe }: Props) => {
   } = recipe;
 
   return (
-    <Card className="rounded-[.5rem]">
+    <Card className="flex flex-col justify-between rounded-[.5rem]">
       <CardHeader className="relative p-0">
         <img
           className="w-full md:h-[200px] object-cover object-center"

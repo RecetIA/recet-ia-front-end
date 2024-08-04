@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 export const Sidebar = () => {
 	const { token, logout } = useLoginMutation();
-	const { queryProfile } = useProfile(token!, logout);
+	const { queryProfile } = useProfile(token!);
 
 	return (
 		<aside

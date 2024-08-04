@@ -107,7 +107,7 @@ export const FullRecipe = () => {
           </span>
         </TypographyH3>
 
-        <div className="flex flex-col md:flex-row gap-x-4">
+        <div className="flex flex-col lg:flex-row gap-x-4">
           <IngredientsList ingredients={firstHalfIngredients} />
 
           <div className="border-l border border-gray-300 mx-4 w-px hidden md:block"></div>

@@ -1,10 +1,12 @@
 import { TypographyH1 } from "@/presentation/components/shared/TypographyH1";
 import { TypographyP } from "@/presentation/components/shared/TypographyP";
 import { buttonVariants } from "@/presentation/components/ui/button";
+import { useLoginMutation } from "@/presentation/hooks";
 
 import { Link } from "react-router-dom";
 
 export const Home = () => {
+  const { token } = useLoginMutation();
   return (
     <section className="flex items-center flex-col py-10 px-4 lg:flex-row h-full lg:py-32">
       <article
@@ -26,7 +28,7 @@ export const Home = () => {
           </TypographyP>
 
           <Link
-            to="/recetas/crear-receta"
+            to={token ? "/recetas/crear-receta" : "/auth/login"}
             className={buttonVariants({
               className: "rounded-lg text-base py-5",
             })}

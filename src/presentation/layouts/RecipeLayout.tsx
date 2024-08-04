@@ -8,20 +8,18 @@ import { MobileBar } from '../components/recipe/MobileBar';
 
 export const RecipeLayout = () => {
 	return (
-		<div className='flex'>
-			<Sidebar />
+    <div className="flex">
+      <Sidebar />
 
-			<main className='min-h-screen w-full px-2 md:container'>
-				<TooltipProvider
-					delayDuration={200}
-					skipDelayDuration={1000}>
-					<Outlet />
-				</TooltipProvider>
-			</main>
+      <main className="min-h-screen w-full pb-14 md:pb-0 px-2 md:container">
+        <TooltipProvider delayDuration={200} skipDelayDuration={1000}>
+          <Outlet />
+        </TooltipProvider>
+      </main>
 
-			<MobileBar/>
-			
-			<Toaster />
-		</div>
-	);
+      <MobileBar />
+
+      <Toaster />
+    </div>
+  );
 };
