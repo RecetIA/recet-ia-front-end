@@ -10,11 +10,11 @@ export const Home = () => {
   return (
     <section className="flex items-center flex-col py-10 px-4 lg:flex-row h-full lg:py-32">
       <article
-        className="lg:px-10 max-w-[30rem] lg:w-full lg:max-w-[40rem] 
+        className="lg:px-10 w-5/6 lg:w-full lg:max-w-[40rem] 
       flex flex-col justify-center items-center gap-4"
       >
         <div className="space-y-4">
-          <TypographyH1 className="font-bold">
+          <TypographyH1 className="font-bold text-balance">
            Las mejores recetas con{" "}
             <b className="text-green-600">RecetIA</b>
           </TypographyH1>
@@ -38,7 +38,7 @@ export const Home = () => {
         </div>
 
         <img
-          className="block lg:hidden size-56"
+          className="block lg:hidden w-4/5"
           src="/home-image.png"
           alt="home-image"
         />

@@ -27,13 +27,14 @@ export const FavoriteRecipes = () => {
         En esta sección verás todas tus recetas favoritas.
       </TypographyP>
 
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-10 lg:gap-4 justify-items-center content-stretch pt-4 h-5/6">
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-9 md:gap-8 lg:gap-6 xl:gap-4 justify-items-center items-start pt-4 h-5/6">
         {queryFavoriteRecipes.data && queryFavoriteRecipes.data.length > 0 ? (
           queryFavoriteRecipes.data?.map((recipe) => (
             <RecipeCard
               key={recipe.id}
               recipe={recipe}
               prefetchRecipe={prefetchRecipe}
+              isLoading={queryFavoriteRecipes.isLoading}
             />
           ))
         ) : (

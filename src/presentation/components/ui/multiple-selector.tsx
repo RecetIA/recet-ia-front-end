@@ -546,7 +546,7 @@ const MultipleSelector = React.forwardRef<
                                 onChange?.(newOptions);
                               }}
                               className={cn(
-                                "cursor-pointer text-black",
+                                "cursor-pointer text-black !pointer-events-auto",
                                 option.disable &&
                                   "cursor-default text-muted-foreground"
                               )}

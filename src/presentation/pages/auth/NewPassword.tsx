@@ -109,7 +109,7 @@ export const NewPassword = () => {
               name="password"
               render={({ field, formState: { errors } }) => (
                 <FormItem>
-                  <FormLabel>Nueva contraseña</FormLabel>
+                  <FormLabel>Nueva contraseña:</FormLabel>
                   <FormControl>
                     <Input
                       type="password"
