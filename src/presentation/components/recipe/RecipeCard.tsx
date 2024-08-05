@@ -32,7 +32,7 @@ export const RecipeCard = ({ recipe, prefetchRecipe, isLoading }: Props) => {
   } = recipe;
 
   return (
-    <Card className="rounded-[.5rem] w-full">
+    <Card className="flex flex-col justify-between rounded-[.5rem] h-full">
       <CardHeader className="relative p-0">
         {isLoading ? (
           <Skeleton className="w-full h-[31.25rem] md:h-64 rounded-lg rounded-bl-none rounded-br-none" />

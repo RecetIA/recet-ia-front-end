@@ -52,7 +52,7 @@ export const GenerateRecipe = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center min-h-full">
+    <div className="flex flex-col justify-center min-h-full py-4 md:py-0">
       <section className="flex flex-col justify-center h-full items-center text-center">
         <TypographyH2 className="font-semibold mb-3 text-gray-700">
           Tus ingredientes aquí
@@ -132,7 +132,7 @@ export const GenerateRecipe = () => {
           </Button>
 
           <hr className="border-gray-300" />
-          <section className="my-5">
+          <section className="mt-5">
             <TypographyH2 className="font-semibold mb-3 text-primary text-center">
               Genera una receta <br />
               para ver los resultados
