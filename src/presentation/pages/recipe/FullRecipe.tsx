@@ -90,7 +90,7 @@ export const FullRecipe = () => {
               urlImg,
               handleGenerateImg: () =>
                 recipeImgMutation.mutate({
-                  prompt: queryRecipe.data!.name,
+                  prompt: queryRecipe.data!.description,
                   recipeId: queryRecipe.data!.id,
                 }),
             }}

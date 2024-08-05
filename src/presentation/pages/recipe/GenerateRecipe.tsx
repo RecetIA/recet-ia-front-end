@@ -108,7 +108,7 @@ export const GenerateRecipe = () => {
             isLoadingImg: isLoadingRecipeImg,
             handleGenerateImg: () =>
               recipeImgMutation.mutate({
-                prompt: recipeMutation.data!.name,
+                prompt: recipeMutation.data!.description,
                 recipeId: recipeMutation.data!.id,
               }),
           }}
