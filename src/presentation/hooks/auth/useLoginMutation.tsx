@@ -5,11 +5,12 @@ import { apiFetcher } from "@/config/adapters/api.adapter";
 
 import { useMutation } from "@tanstack/react-query";
 import { useLocalStorage } from "@uidotdev/usehooks";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const useLoginMutation = () => {
   const [isLoadingLogin, setIsLoadingLogin] = useState(false);
   const navitation = useNavigate();
+   const {pathname} = useLocation();
 
   const loginMutation = useMutation({
     mutationFn: (body: Record<string, string>) => {
@@ -38,10 +39,10 @@ export const useLoginMutation = () => {
   }, [loginMutation.data, saveToken, navitation]);
 
   useEffect(() => {
-    if (!token) {
-      navitation("/auth/login");
+    if (!token && !pathname.includes("/auth")) {
+      navitation("/");
     }
-  }, [token, navitation]);
+  }, [token, navitation, pathname]);
   
   
 

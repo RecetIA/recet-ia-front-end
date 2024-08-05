@@ -7,7 +7,7 @@ import { EmptyStateMessage } from "@/presentation/components/shared/EmptyStateMe
 
 import { GLOBALS } from "@/config/helpers/constants";
 
-import { Bookmark } from "lucide-react";
+import { NotebookText } from "lucide-react";
 
 export const SavedRecipes = () => {
   const { token } = useLoginMutation();
@@ -17,10 +17,10 @@ export const SavedRecipes = () => {
   return (
     <div className="p-3 h-full">
       <TypographyH2 className="flex items-center gap-2 text-gray-700">
-        <Bookmark className="w-8 h-8" /> Guardados
+        <NotebookText className="w-8 h-8" /> Mis recetas
       </TypographyH2>
       <TypographyP className="text-gray-700 text-pretty">
-        En esta sección verás todas las recetas que guardadas.
+        En esta sección verás todas tus recetas generadas.
       </TypographyP>
 
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-10 lg:gap-4 justify-items-center pt-4 h-5/6">
@@ -35,8 +35,8 @@ export const SavedRecipes = () => {
         ) : (
           <EmptyStateMessage
             imageUrl={GLOBALS.imageUrlRecipeFeedback}
-            message="Aún no tienes recetas guardadas. ¡Genera una receta con IA!"
-            altText="Imagen de receta cuando no hay guardados"
+            message="Aún no tienes recetas. ¡Genera una receta con IA!"
+            altText="Imagen de recetas guardadas"
           />
         )}
       </section>

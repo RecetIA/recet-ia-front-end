@@ -35,7 +35,7 @@ export const ConfirmAccount = () => {
         <div className="bg-green-200 border-l-4 border-green-500 p-3 flex items-center gap-2 text-green-500">
           <CheckCircle2Icon />
 
-          <TypographyP>Usuario confirmado correctamente</TypographyP>
+          <TypographyP>Usuario confirmado correctamente.</TypographyP>
         </div>
       )}
 

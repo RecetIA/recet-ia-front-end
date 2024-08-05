@@ -24,7 +24,7 @@ export const FavoriteRecipes = () => {
         <Heart className="w-8 h-8" /> Mis favoritos
       </TypographyH2>
       <TypographyP className="text-gray-700 text-pretty">
-        En esta sección verás todas tus recetas favoritas
+        En esta sección verás todas tus recetas favoritas.
       </TypographyP>
 
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-10 lg:gap-4 justify-items-center content-stretch pt-4 h-5/6">

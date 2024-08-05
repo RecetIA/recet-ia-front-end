@@ -58,11 +58,10 @@ export const GenerateRecipe = () => {
           Tus ingredientes aquí
         </TypographyH2>
         <TypographyP className="text-gray-700 text-balance">
-          Echa un vistazo a tu despensa y escribe algunos ingredientes que
-          tengas a la mano.
+          Echa un vistazo a tu despensa y escribe algunos ingredientes disponibles aquí.
         </TypographyP>
         <TypographyP className="text-gray-700 text-balance">
-          Tambien puedes escoger entre algunos de los siguientes debajo del
+          Puedes escoger entre algunos de los siguientes debajo del
           campo.
         </TypographyP>
 
@@ -140,7 +139,7 @@ export const GenerateRecipe = () => {
             </TypographyH2>
             <TypographyP className="text-gray-700 text-center text-balance">
               Nuestra Inteligencia Artificial te brindará distintas
-              recomendaciones de recetas para ti!
+              recomendaciones de recetas para ti.
             </TypographyP>
           </section>
         </>

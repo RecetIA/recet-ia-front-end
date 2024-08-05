@@ -111,21 +111,21 @@ export const ResetPassword = () => {
             {isLoadingResetPassword ? "Recuperando..." : "Recuperar"}
           </Button>
 
-          <div className="flex flex-col md:flex-row gap-4 items-center">
+          <div className="flex flex-col md:flex-row gap-2 items-center">
             <TypographyP className="text-md text-balance">
               ¿Ya tienes cuenta?
               <Link to="/auth/login" className="text-sky-600 ml-2 font-medium">
-                Inicia sesion
+                Inicia sesion.
               </Link>
             </TypographyP>
 
-            <TypographyP className="text-md">
+            <TypographyP className="text-md text-balance">
               ¿No tienes cuenta?
               <Link
                 to="/auth/registrar"
                 className="text-sky-600 ml-2 font-medium"
               >
-                Crea una
+                Crea una.
               </Link>
             </TypographyP>
           </div>

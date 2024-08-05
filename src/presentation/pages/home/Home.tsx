@@ -15,16 +15,16 @@ export const Home = () => {
       >
         <div className="space-y-4">
           <TypographyH1 className="font-bold">
-            El Mejor superalimento delicioso con{" "}
+           Las mejores recetas con{" "}
             <b className="text-green-600">RecetIA</b>
           </TypographyH1>
 
-          <TypographyP>
+          <TypographyP className="text-balance">
             <b className="text-green-600">RecetIA</b> tu asistente inteligente
             de recetas saludables ¿Tienes verduras y no sabes qué cocinar?{" "}
-            <b className="text-green-600">RecetIA</b> te sugiere{" "}
-            <b>recetas deliciosas y nutritivas</b> basadas en tus ingredientes.
-            <b>¡Prueba RecetIA hoy y sorpréndete!</b>
+            <b className="text-green-600">RecetIA</b> te ofrece{" "}
+            <b>recetas deliciosas y nutritivas</b> basadas en tus ingredientes.{" "}
+            <b className="text-green-600">¡Prueba RecetIA hoy y sorpréndete!</b>
           </TypographyP>
 
           <Link
