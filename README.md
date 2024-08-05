@@ -3,28 +3,66 @@ _Frontend_ de aplicación para generar recetas con inteligencia artificial, idea
 preparaciones con ingredientes que tienes en casa.
 ___
 
-## Diagrama de arquitectura limpia
-Esta app se desarrollará bajo una arquitectura limpia incompleta o adaptada, ya que no usaremos los _Datasources_ y el patrón _Repository_. Sin embargo, se usarán buenas prácticas de _Clean code_ y principios _SOLID_ que permitirá la mantenibilidad y escalabilidad de la aplicación.
-
-![arquitectura-limpia](https://miro.medium.com/v2/resize:fit:1200/1*A_rg9nq0W01o0X8SnNZpFQ.png)
-
 ## Tecnologías y Bibliotecas:
 
 Para el desarrollo _Frontend_ de esta _App Web_ se usaron las siguientes tecnologías y bibliotecas:
 
 - **_HTML_**
 - **_CSS_**
-- **_Javascript_**
 - **_Shadcn/UI_**
 - **_Tailwind CSS_**
 - **_React_**
 - **_TypeScript_**
 - **_Git_** 
+- **_Zod_**
+- **_React Query_**
+- **_React Hook Form_**
 - **_Netlify_**
+- **_Zustand_**
+- **_Axios_**
+- **_Vite_**
 
-![Tecnologias](https://skillicons.dev/icons?i=html,css,js,tailwind,react,vite,ts,git,github,npm,netlify)
+![Tecnologias](https://skillicons.dev/icons?i=html,css,tailwind,react,vite,ts,git,github,npm,netlify)
 
+---
 
+# Uso de la aplicación
+
+1. **Clonar el resposito:**
+
+```bash
+git clone https://github.com/RecetIA/recet-ia-front-end.git
+```
+
+2. **Acceder a la carpeta del proyecto:**
+
+```bash
+cd recet-ia-front-end
+```
+
+3. **Instalar las dependencias:**
+```bash 
+  npm install
+```
+
+4. **Crear un archivo `.env` basado en el `.env.template`**
+    - Copia el archivo .env.template y renómbralo a .env. Esto se puede hacer manualmente o mediante un comando en la terminal.
+    ```
+      cp .env.template .env
+    ```
+
+5. **Configura el archivo .env:**
+    - Busca la línea que contiene VITE_BACKEND_URL
+    - Agrega el puerto real en el backend está escuchando. Por ejemplo, si tu backend está en el puerto 5000, deberías modificar la línea para que se vea así:
+    ```
+      VITE_BACKEND_URL=http://localhost:5000
+    ```
+6. **Ejecuta la aplicación:**
+```bash
+npm run dev
+```
+
+7. **Abrir el navegador de tu preferencia y escribir en un nueva pestaña `http://localhost:5173`**
 ---
 
 ## Hosting:
