@@ -3,11 +3,24 @@ _Frontend_ de aplicación para generar recetas con inteligencia artificial, idea
 preparaciones con ingredientes que tienes en casa.
 ___
 
+# Diseño de la aplicación
+
+## Herramientas utilizadas
+
+- **_Figma:_** Utilizado para diseñar la interfaz, crear prototipos interactivos y colaborar en tiempo real.
+- **_Tipografía Lato:_** Elegida por su legibilidad y estilo moderno.
+
+![Figma](/public/image.png)
+[Ir al diseño Recet IA](https://www.figma.com/design/vkhDMe5kGsd5hmKjWPm7Zj/RecetIA?node-id=212-3532&t=uLbBGRu92ylHzeEs-1)
+
+---
+
 ## Tecnologías y Bibliotecas:
 
 Para el desarrollo _Frontend_ de esta _App Web_ se usaron las siguientes tecnologías y bibliotecas:
 
 - **_HTML_**
+- **_Figma_**
 - **_CSS_**
 - **_Shadcn/UI_**
 - **_Tailwind CSS_**
