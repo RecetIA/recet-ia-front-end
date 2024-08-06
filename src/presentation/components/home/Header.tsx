@@ -5,10 +5,17 @@ import { buttonVariants } from "../ui/button";
 import { AvatarMenu } from "./AvatarMenu";
 
 import { Link, NavLink } from "react-router-dom";
+import { useEffect } from "react";
 
 export const Header = () => {
-  const { token, logout} = useLoginMutation();
+  const { token, logout } = useLoginMutation();
   const { queryProfile } = useProfile(token!);
+
+  useEffect(() => {
+    if (queryProfile.isError) {
+      logout();
+    }
+  }, [queryProfile.isError,logout]);
 
   return (
     <header className="bg-white relative flex justify-between items-center py-3 px-2 md:px-8 z-20">

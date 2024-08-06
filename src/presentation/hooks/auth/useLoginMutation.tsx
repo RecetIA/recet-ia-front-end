@@ -28,7 +28,6 @@ export const useLoginMutation = () => {
   });
 
   const [token, saveToken] = useLocalStorage<string | null>("token", null);
-  
 
   useEffect(() => {
     if (loginMutation.data) {
@@ -44,8 +43,6 @@ export const useLoginMutation = () => {
     }
   }, [token, navitation, pathname]);
   
-  
-
   const logout = () => {
     saveToken(null);
     navitation("/");

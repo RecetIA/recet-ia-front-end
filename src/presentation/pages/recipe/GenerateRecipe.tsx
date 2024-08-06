@@ -52,17 +52,17 @@ export const GenerateRecipe = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center min-h-full py-4 md:py-0">
+    <div className="flex flex-col justify-center min-h-full py-4">
       <section className="flex flex-col justify-center h-full items-center text-center">
         <TypographyH2 className="font-semibold mb-3 text-gray-700">
           Tus ingredientes aquí
         </TypographyH2>
         <TypographyP className="text-gray-700 text-balance">
-          Echa un vistazo a tu despensa y escribe algunos ingredientes disponibles aquí.
+          Echa un vistazo a tu despensa y escribe algunos ingredientes
+          disponibles aquí.
         </TypographyP>
         <TypographyP className="text-gray-700 text-balance">
-          Puedes escoger entre algunos de los siguientes debajo del
-          campo.
+          Puedes escoger entre algunos de los siguientes debajo del campo.
         </TypographyP>
 
         <MultipleSelector
