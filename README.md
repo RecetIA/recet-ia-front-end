@@ -3,9 +3,9 @@ _Frontend_ de aplicación para generar recetas con inteligencia artificial, idea
 preparaciones con ingredientes que tienes en casa.
 ___
 
-# Diseño de la aplicación
+## Diseño de la aplicación
 
-## Herramientas utilizadas
+### Herramientas utilizadas
 
 - **_Figma:_** Utilizado para diseñar la interfaz, crear prototipos interactivos y colaborar en tiempo real.
 - **_Tipografía Lato:_** Elegida por su legibilidad y estilo moderno.
