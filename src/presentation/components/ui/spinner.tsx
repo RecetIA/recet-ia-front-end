@@ -22,6 +22,8 @@ const loaderVariants = cva("animate-spin text-primary", {
       small: "size-6",
       medium: "size-8",
       large: "size-12",
+      xl: "size-16",
+      xxl: "size-24"
     },
   },
   defaultVariants: {

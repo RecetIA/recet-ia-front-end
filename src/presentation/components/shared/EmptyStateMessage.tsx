@@ -8,7 +8,7 @@ interface Props {
 
 export const EmptyStateMessage = ({ imageUrl, message, altText }: Props) => {
   return (
-    <div className="col-span-4 inline-flex flex-col justify-center items-center gap-4 relative">
+    <div className="col-span-4 inline-flex flex-col justify-center items-center gap-4 relative h-full">
       <img
         className="w-full md:w-96 md:h-80 object-cover object-center bg-white mix-blend-multiply"
         src={imageUrl}
