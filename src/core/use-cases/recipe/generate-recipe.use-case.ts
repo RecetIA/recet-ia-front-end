@@ -9,7 +9,8 @@ export const generateRecipeUseCase = async (
   body: Record<string,string | string[]>,
   token: string
 ): Promise<Recipe> => {
+
   const recipe = await fetcher.post<RecipeResponse>("/recipe/generate-recipe",body,{}, token);
-  
+
   return RecipeMapper.fromRecipeResultToEntity(recipe);
 };

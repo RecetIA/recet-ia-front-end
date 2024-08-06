@@ -53,13 +53,15 @@ export const RecipeInfo = ({
                 src={
                   recipe?.imageUrl
                     ? recipe?.imageUrl
-                    : urlImg ? urlImg : GLOBALS.imageUrlFallback
+                    : urlImg
+                    ? urlImg
+                    : GLOBALS.imageUrlFallback
                 }
                 alt="Imagen de receta"
                 width="384"
                 height="240"
               />
-              {recipe?.imageUrl || urlImg ? null: (
+              {recipe?.imageUrl || urlImg ? null : (
                 <IconAvatar
                   className="absolute bottom-3 right-3 lg:left-[5.8rem] lg:top-[5.6rem] bg-white text-slate-600 hover:text-slate-800 lg:w-11 lg:h-11 cursor-pointer transition-colors"
                   icon={<ImageUp className="w-6 h-6" />}
@@ -127,8 +129,10 @@ export const RecipeInfo = ({
         {showButton && (
           <Button
             className={cn({
-              "pointer-events-none cursor-not-allowed": isLoadingImg,
+              "pointer-events-none cursor-not-allowed opacity-65":
+                isLoadingImg || isLoading,
             })}
+            disabled={isLoading}
             asChild
           >
             <Link

@@ -32,7 +32,7 @@ export const RecipeCard = ({ recipe, prefetchRecipe, isLoading }: Props) => {
   } = recipe;
 
   return (
-    <Card className="rounded-[.5rem] w-full">
+    <Card className="flex flex-col justify-between rounded-[.5rem] w-full">
       <CardHeader className="relative p-0">
         {isLoading ? (
           <Skeleton className="w-full h-[31.25rem] md:h-64 rounded-lg rounded-bl-none rounded-br-none" />
@@ -120,7 +120,7 @@ export const RecipeCard = ({ recipe, prefetchRecipe, isLoading }: Props) => {
           to={`/recetas/${id}`}
           onMouseEnter={() => prefetchRecipe && prefetchRecipe(id)}
           className={buttonVariants({
-            className: "flex gap-3 font-semibold text-lg w-full",
+            className: `flex gap-3 font-semibold text-lg w-full ${!name ? "pointer-events-none cursor-not-allowed opacity-65" : ""}`,
           })}
         >
           Ver receta <ArrowRight className="w-5 h-5" />
