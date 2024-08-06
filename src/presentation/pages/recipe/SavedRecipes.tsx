@@ -5,6 +5,8 @@ import { TypographyP } from "@/presentation/components/shared/TypographyP";
 import { RecipeCard } from "@/presentation/components/recipe/RecipeCard";
 import { EmptyStateMessage } from "@/presentation/components/shared/EmptyStateMessage";
 
+import { Spinner } from "@/presentation/components/ui/spinner";
+
 import { GLOBALS } from "@/config/helpers/constants";
 
 import { NotebookText } from "lucide-react";
@@ -24,7 +26,15 @@ export const SavedRecipes = () => {
       </TypographyP>
 
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-9 md:gap-8 lg:gap-6 xl:gap-4 justify-items-center items-start pt-4 h-5/6">
-        {querySavedRecipes.data && querySavedRecipes.data.length > 0 ? (
+        {querySavedRecipes.isLoading ? (
+          <div className="col-span-4 flex justify-center items-center w-full h-full">
+            <Spinner
+              size="xxl"
+              show={querySavedRecipes.isLoading}
+              className="text-slate-300 col-span-4"
+            />
+          </div>
+        ) : querySavedRecipes.data && querySavedRecipes.data.length > 0 ? (
           querySavedRecipes.data?.map((recipe) => (
             <RecipeCard
               key={recipe.id}

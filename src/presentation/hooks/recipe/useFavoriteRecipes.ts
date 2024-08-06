@@ -7,19 +7,6 @@ export const useFavoriteRecipes = (token: string) => {
   const queryFavoriteRecipes = useQuery({
     queryKey: ["favorite-recipes", token],
     queryFn: () => UseCases.getFavoriteRecipesUseCase(apiFetcher, token),
-    placeholderData: [
-      {
-          id: "asdfrt468076tgfvdx",
-          name: "",
-          imageUrl: "",
-          quantityIngredients: 0,
-          cookTimeInMins: 0,
-          calories: 0,
-          servings: 0,
-          matchRate: 0,
-          observations: "",
-      },
-    ],
   });
 
 

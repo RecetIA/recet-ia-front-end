@@ -6,12 +6,14 @@ import {
 
 import { TypographyH2 } from "@/presentation/components/shared/TypographyH2";
 import { TypographyP } from "@/presentation/components/shared/TypographyP";
+import { EmptyStateMessage } from "@/presentation/components/shared/EmptyStateMessage";
 import { RecipeCard } from "@/presentation/components/recipe/RecipeCard";
+
+import { Spinner } from "@/presentation/components/ui/spinner";
 
 import { GLOBALS } from "@/config/helpers/constants";
 
 import { Heart } from "lucide-react";
-import { EmptyStateMessage } from "@/presentation/components/shared/EmptyStateMessage";
 
 export const FavoriteRecipes = () => {
   const { token } = useLoginMutation();
@@ -28,7 +30,16 @@ export const FavoriteRecipes = () => {
       </TypographyP>
 
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-9 md:gap-8 lg:gap-6 xl:gap-4 justify-items-center items-start pt-4 h-5/6">
-        {queryFavoriteRecipes.data && queryFavoriteRecipes.data.length > 0 ? (
+        {queryFavoriteRecipes.isLoading ? (
+          <div className="col-span-4 flex justify-center items-center w-full h-full">
+            <Spinner
+              size="xxl"
+              show={queryFavoriteRecipes.isLoading}
+              className="text-slate-300 col-span-4"
+            />
+          </div>
+        ) : queryFavoriteRecipes.data &&
+          queryFavoriteRecipes.data.length > 0 ? (
           queryFavoriteRecipes.data?.map((recipe) => (
             <RecipeCard
               key={recipe.id}
